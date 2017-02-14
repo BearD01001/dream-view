@@ -1,0 +1,23 @@
+{
+  "name": "DreamView",
+  "version": "1.0.0",
+  "description": "a tab extension of chrome.",
+  "main": "manifest.json",
+  "repository": "git@github.com:BearD01001/DreamView.git",
+  "author": "BearD01001 <d@vsv.io>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "babel-preset-latest": "^6.22.0",
+    "deprecated": "^0.0.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-less": "^3.3.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^4.3.11",
+    "less-plugin-autoprefix": "^1.5.1",
+    "orchestrator": "^0.3.8",
+    "vinyl-fs": "^2.4.4"
+  }
+}
