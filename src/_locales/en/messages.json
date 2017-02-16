@@ -1,0 +1,10 @@
+{
+    "extName": {
+        "message": "DreamView",
+        "description": "Extension Name"
+    },
+    "extDescription": {
+        "message": "Bring wonderful photos in your dream to your view.",
+        "description": "Extension Description"
+    }
+}

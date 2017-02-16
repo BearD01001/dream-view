@@ -1,0 +1,14 @@
+{
+    "name": {
+        "message": "梦想视界",
+        "description": "Extension Name"
+    },
+    "description": {
+        "message": "将梦想中向往之地的美景尽收眼底。",
+        "description": "Extension Description"
+    },
+    "title": {
+        "message": "还记得你的梦想之地吗？",
+        "description": "Default title for extension."
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+    "name": "DreamView",
+    "version": "1.0.0",
+    "description": "Bring wonderful photos of your dream to your view.",
+    "author": "BearD01001",
+    "homepage_url": "https://github.com/BearD01001/DreamView/",
+    "icons": {
+        "16": "img/dreamview16.png",
+        "48": "img/dreamview48.png",
+        "128": "img/dreamview128.png"
+    },
+    "browser_action": {
+        "default_action": {
+            "19": "img/icon19.png",
+            "38": "img/icon38.png"
+        },
+        "default_title": "DreamView",
+        "default_popup": "html/popup.html"
+    },
+    "chrome_url_overrides": {
+        "newtab": "html/tab.html"
+    }
+}
