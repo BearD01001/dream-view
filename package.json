@@ -7,8 +7,11 @@
   "author": "BearD01001 <d@vsv.io>",
   "license": "Apache-2.0",
   "devDependencies": {
+    "babel-loader": "^6.3.2",
     "babel-preset-latest": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
     "deprecated": "^0.0.1",
+    "extract-text-webpack-plugin": "^2.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-less": "^3.3.0",
@@ -16,8 +19,12 @@
     "gulp-sourcemaps": "^2.4.1",
     "gulp-util": "^3.0.8",
     "gulp-watch": "^4.3.11",
+    "gulp-webpack": "^1.5.0",
     "less-plugin-autoprefix": "^1.5.1",
     "orchestrator": "^0.3.8",
+    "path": "^0.12.7",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
     "vinyl-fs": "^2.4.4"
   }
 }

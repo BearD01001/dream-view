@@ -2,22 +2,36 @@ var gulp         = require('gulp'),
     less         = require('gulp-less'),
     babel        = require('gulp-babel'),
     plumber      = require('gulp-plumber'),
+    webpack      = require('gulp-webpack'),
+    revAppend    = require('gulp-rev-append'),
     sourcemaps   = require('gulp-sourcemaps');
 
-var CONFIG       = require('./gulpconfig');
+var CONFIG       = require('./config');
+var WEBPACK      = require('./webpack.config');
 
-gulp.task('json', function() {
-    gulp.src(CONFIG.path.src.json)
-        .pipe(gulp.dest(CONFIG.path.dist.json));
+gulp.task('webpack', function() {
+    gulp.src(CONFIG.path.srcCompile.js)
+        .pipe(webpack(WEBPACK))
+        .pipe(gulp.dest(CONFIG.path.dist.js));
+});
+
+gulp.task('html-copy', function() {
+    gulp.src(CONFIG.path.srcCompile.html)
+        .pipe(gulp.dest(CONFIG.path.dist.html));
+});
+gulp.task('html-sign', ['html-trans'], function() {
+    gulp.src(CONFIG.path.srcCompile.html)
+        .pipe(revAppend())
+        .pipe(gulp.dest(CONFIG.path.dist.html));
 });
 
 gulp.task('html', function() {
-    gulp.src(CONFIG.path.src.html)
+    gulp.src(CONFIG.path.srcCompile.html)
         .pipe(gulp.dest(CONFIG.path.dist.html));
 });
 
 gulp.task('css', function() {
-    gulp.src(CONFIG.path.src.css)
+    gulp.src(CONFIG.path.srcCompile.css)
         .pipe(plumber({ errHandler: e => CONFIG.plumberCatch(e) }))
         .pipe(sourcemaps.init(CONFIG.sourcemaps.init))
         .pipe(less(CONFIG.less))
@@ -26,7 +40,7 @@ gulp.task('css', function() {
 });
 
 gulp.task('js', function() {
-    gulp.src(CONFIG.path.src.js)
+    gulp.src(CONFIG.path.srcCompile.js)
         .pipe(plumber({ errHandler: e => CONFIG.plumberCatch(e) }))
         .pipe(sourcemaps.init(CONFIG.sourcemaps.init))
         .pipe(babel())
@@ -35,8 +49,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('default', function() {
-    gulp.watch(CONFIG.path.src.json, ['json']);
-    gulp.watch(CONFIG.path.src.html, ['html']);
-    gulp.watch(CONFIG.path.src.css, ['css']);
-    gulp.watch(CONFIG.path.src.js, ['js']);
+    gulp.watch(CONFIG.path.srcWatch.html, ['html']);
+    gulp.watch(CONFIG.path.srcWatch.css, ['css']);
+    gulp.watch(CONFIG.path.srcWatch.js, ['js']);
 });
