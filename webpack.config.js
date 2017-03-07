@@ -9,7 +9,7 @@ module.exports = {
         path: dist_path,
         filename: 'tab.js'
     },
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'source-map',
     module: {
         loaders: [
             {

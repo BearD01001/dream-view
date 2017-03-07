@@ -2,6 +2,8 @@ var path         = require('path'),
     gulp         = require('gulp'),
     less         = require('gulp-less'),
     babel        = require('gulp-babel'),
+    colors       = require('colors'),
+    moment       = require('moment'),
     plumber      = require('gulp-plumber'),
     webpack      = require('webpack');
     gWebpack     = require('gulp-webpack'),
@@ -42,6 +44,14 @@ function htmlSign() {
 /* end */
 
 
+/* 图片文件被修改，直接拷贝（TODO：文件压缩 & 合并） */
+    gulp.task('build img', function() {
+        gulp.src(CONFIG.path.srcCompile.img)
+            .pipe(gulp.dest(CONFIG.path.dist.img));
+    })
+/* end */
+
+
 /* css / less 文件被修改
         编译样式文件后更新 html 文件引用指纹 
         任务顺序：
@@ -76,9 +86,12 @@ function htmlSign() {
         gulp.src(CONFIG.path.srcCompile.js)
             .pipe(gWebpack(WEBPACK, null, function() {
                 /* 在 gulp-webpack 插件的回调函数中更新 html 引用指纹，此时 js 文件已经打包完成并输出到指定目录 */
-                console.log('build js > sign html');
+                console.log('[' + moment().format('HH:mm:ss').grey + '] Strating \'' + 'build js > sign html'.cyan + '\'...');
+                // console.log('build js > sign html');
                 htmlSign();
-            }));
+                console.log('[' + moment().format('HH:mm:ss').grey + '] Finished \'' + 'build js > sign html'.cyan + '\'');
+            }))
+            .pipe(gulp.dest(CONFIG.path.dist.js));
     });
 
     gulp.task('build js', ['build js > package js & sign html']);
@@ -89,9 +102,10 @@ function htmlSign() {
 gulp.task('default', function() {
     gulp.watch(CONFIG.path.srcWatch.json, ['build json']);
     gulp.watch(CONFIG.path.srcWatch.html, ['build html']);
+    gulp.watch(CONFIG.path.srcWatch.img, ['build img']);
     gulp.watch(CONFIG.path.srcWatch.css, ['build css']);
     gulp.watch(CONFIG.path.srcWatch.js, ['build js']);
 });
 
 /* 编译全部文件 */
-gulp.task('build', ['build json', 'build html', 'build css', 'build js']);
+gulp.task('build', ['build json', 'build html' ,'build img', 'build css', 'build js']);

@@ -11,18 +11,21 @@ module.exports = {
         srcWatch: {
             json: ['src/**/*.json'],
             html: ['src/html/**/*.html'],
+            img: ['src/img/**/*.*'],
             css: ['src/css/**/*.less'],
             js: ['src/js/**/*.js', 'src/js/**/*.jsx']
         },
         srcCompile: {
             json: ['src/**/*.json'],
             html: ['src/html/*.html'],
+            img: ['src/img/**/*.*'],
             css: ['src/css/*.less'],
             js: ['src/js/*.js']
         },
         dist: {
             json: 'dist',
             html: 'dist/html',
+            img: 'dist/img',
             css: 'dist/css',
             js: 'dist/js'
         }
