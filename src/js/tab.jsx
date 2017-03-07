@@ -8,10 +8,9 @@ class Tab extends Component {
     }
 
     render() {
-        return 
-            <div>
-                <Img />
-            </div>
+        return  <div>
+                    <Img />
+                </div>;
     }
 }
 
