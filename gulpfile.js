@@ -83,7 +83,7 @@ function htmlSign() {
                 2、build js > package js & sign html。
  */
     gulp.task('build js > package js & sign html',function() {
-        gulp.src(CONFIG.path.srcCompile.js)
+        gulp.src(CONFIG.path.srcWatch.js)
             .pipe(gWebpack(WEBPACK, null, function() {
                 /* 在 gulp-webpack 插件的回调函数中更新 html 引用指纹，此时 js 文件已经打包完成并输出到指定目录 */
                 console.log('[' + moment().format('HH:mm:ss').grey + '] Strating \'' + 'build js > sign html'.cyan + '\'...');

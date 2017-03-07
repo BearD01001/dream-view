@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Img from './component/Img.jsx';
 
 class Tab extends Component {
     constructor(args) {
@@ -7,7 +8,10 @@ class Tab extends Component {
     }
 
     render() {
-        return <div>DreamView...</div>
+        return 
+            <div>
+                <Img />
+            </div>
     }
 }
 
