@@ -4,13 +4,14 @@ import Img from './component/Img.jsx';
 
 class Tab extends Component {
     constructor(args) {
-        super(args)
+        super(args);
+
+        top.TAB = this;
     }
 
     render() {
-        return  <div>
-                    <Img />
-                </div>;
+        return  (<div></div>
+                    <Img />);
     }
 }
 
