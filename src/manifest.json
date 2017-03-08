@@ -20,6 +20,6 @@
         "default_popup": "html/popup.html"
     },
     "chrome_url_overrides": {
-        "newtab": "html/tab.html"
+        "newtab": "html/index.html"
     }
 }

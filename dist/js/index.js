@@ -56,9 +56,13 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _Img = __webpack_require__(179);
+	var _img = __webpack_require__(179);
 	
-	var _Img2 = _interopRequireDefault(_Img);
+	var _img2 = _interopRequireDefault(_img);
+	
+	var _widget = __webpack_require__(181);
+	
+	var _widget2 = _interopRequireDefault(_widget);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -68,33 +72,34 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Tab = function (_Component) {
-	    _inherits(Tab, _Component);
+	var Index = function (_Component) {
+	    _inherits(Index, _Component);
 	
-	    function Tab(args) {
-	        _classCallCheck(this, Tab);
+	    function Index(args) {
+	        _classCallCheck(this, Index);
 	
-	        var _this = _possibleConstructorReturn(this, (Tab.__proto__ || Object.getPrototypeOf(Tab)).call(this, args));
+	        var _this = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, args));
 	
-	        top.TAB = _this;
+	        top.INDEX = _this;
 	        return _this;
 	    }
 	
-	    _createClass(Tab, [{
+	    _createClass(Index, [{
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_Img2.default, null)
+	                _react2.default.createElement(_img2.default, null),
+	                _react2.default.createElement(_widget2.default, null)
 	            );
 	        }
 	    }]);
 	
-	    return Tab;
+	    return Index;
 	}(_react.Component);
 	
-	_reactDom2.default.render(_react2.default.createElement(Tab, null), document.getElementById('tab'));
+	_reactDom2.default.render(_react2.default.createElement(Index, null), document.getElementById('index'));
 
 /***/ },
 /* 1 */
@@ -21642,6 +21647,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _imgUtil = __webpack_require__(180);
+	
+	var _imgUtil2 = _interopRequireDefault(_imgUtil);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21662,11 +21671,19 @@
 	    _createClass(Img, [{
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                'Img1'
-	            );
+	            var style = {
+	                position: 'absolute',
+	                top: 0,
+	                right: 0,
+	                bottom: 0,
+	                left: 0,
+	                backgroundImage: 'url(' + _imgUtil2.default.get() + ')',
+	                backgroundRepeat: 'no-repeat',
+	                backgroundSize: 'cover',
+	                backgroundPosition: 'center'
+	            };
+	
+	            return _react2.default.createElement('div', { style: style });
 	        }
 	    }]);
 	
@@ -21675,6 +21692,96 @@
 	
 	exports.default = Img;
 
+/***/ },
+/* 180 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var ImgUtil = function () {
+	    function ImgUtil() {
+	        _classCallCheck(this, ImgUtil);
+	    }
+	
+	    _createClass(ImgUtil, null, [{
+	        key: 'get',
+	        value: function get() {
+	            // TODO
+	            // get a image from localStorage and return its base64 code.
+	            return 'https://drscdn.500px.org/photo/201770877/q%3D80_m%3D2000/1497934ccca4d2bf5e0f827cbc95e82c';
+	        }
+	    }, {
+	        key: 'fetch',
+	        value: function fetch() {
+	            // TODO
+	            // fetch several images from the Internet.
+	        }
+	    }, {
+	        key: '_save',
+	        value: function _save(imgs) {
+	            // TODO
+	            // save images data into localStorage, the type of parameter imgs maybe array.
+	        }
+	    }]);
+	
+	    return ImgUtil;
+	}();
+	
+	exports.default = ImgUtil;
+
+/***/ },
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Widget = function (_Component) {
+	    _inherits(Widget, _Component);
+	
+	    function Widget() {
+	        _classCallCheck(this, Widget);
+	
+	        return _possibleConstructorReturn(this, (Widget.__proto__ || Object.getPrototypeOf(Widget)).apply(this, arguments));
+	    }
+	
+	    _createClass(Widget, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement('div', null);
+	        }
+	    }]);
+	
+	    return Widget;
+	}(_react.Component);
+	
+	exports.default = Widget;
+
 /***/ }
 /******/ ]);
-//# sourceMappingURL=tab.js.map
+//# sourceMappingURL=index.js.map
