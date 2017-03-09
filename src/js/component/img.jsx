@@ -2,20 +2,25 @@ import React, { Component } from 'react';
 import imgUtil from '../module/img-util.jsx';
 
 class Img extends Component {
+    imgLoaded() {
+        DV.setState({
+            imgLoaded: true
+        })
+    }
+
+    componentDidMount() {
+        DV.img.DOM = this.refs.img;
+    }
+
     render() {
+        let img = imgUtil.get();
         let style = {
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-            backgroundImage: `url(${ imgUtil.get() })`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundImage: `url(${ img })`,
         }
 
-        return <div style={ style }></div>;
+        return  <div id='img' className={ DV.state.imgLoaded ? 'show' : '' } style={ style } ref='img'>
+                    <img src={ img } onLoad={ this.imgLoaded } />
+                </div>;
     }
 }
 

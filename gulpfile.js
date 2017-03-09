@@ -31,6 +31,14 @@ function htmlSign() {
 /* end */
 
 
+/* font 文件被修改，直接拷贝 */
+    gulp.task('build font', function() {
+        gulp.src(CONFIG.path.srcCompile.font)
+            .pipe(gulp.dest(CONFIG.path.dist.font));
+    })
+/* end */
+
+
 /* html 文件被修改任务列表 */
     gulp.task('copy html', function() {
         htmlCopy();
@@ -107,6 +115,7 @@ function htmlSign() {
 /* 监控各个源码路径下的文件改动，实时运行指定任务 */
 gulp.task('default', function() {
     gulp.watch(CONFIG.path.srcWatch.json, ['build json']);
+    gulp.watch(CONFIG.path.srcWatch.json, ['build font']);
     gulp.watch(CONFIG.path.srcWatch.html, ['build html']);
     gulp.watch(CONFIG.path.srcWatch.img, ['build img']);
     gulp.watch(CONFIG.path.srcWatch.css, ['build css']);
@@ -114,4 +123,4 @@ gulp.task('default', function() {
 });
 
 /* 编译全部文件 */
-gulp.task('build', ['build json', 'build html' ,'build img', 'build css', 'build js']);
+gulp.task('build', ['build json', 'build font', 'build html' ,'build img', 'build css', 'build js']);

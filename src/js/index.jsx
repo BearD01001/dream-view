@@ -7,7 +7,11 @@ class Index extends Component {
     constructor(args) {
         super(args);
 
-        top.INDEX = this;
+        this.img = {};
+        this.state = {
+            imgLoaded: false
+        }
+        top.DV = this;
     }
 
     render() {

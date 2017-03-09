@@ -80,7 +80,11 @@
 	
 	        var _this = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, args));
 	
-	        top.INDEX = _this;
+	        _this.img = {};
+	        _this.state = {
+	            imgLoaded: false
+	        };
+	        top.DV = _this;
 	        return _this;
 	    }
 	
@@ -21669,21 +21673,30 @@
 	    }
 	
 	    _createClass(Img, [{
+	        key: 'imgLoaded',
+	        value: function imgLoaded() {
+	            DV.setState({
+	                imgLoaded: true
+	            });
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            DV.img.DOM = this.refs.img;
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var img = _imgUtil2.default.get();
 	            var style = {
-	                position: 'absolute',
-	                top: 0,
-	                right: 0,
-	                bottom: 0,
-	                left: 0,
-	                backgroundImage: 'url(' + _imgUtil2.default.get() + ')',
-	                backgroundRepeat: 'no-repeat',
-	                backgroundSize: 'cover',
-	                backgroundPosition: 'center'
+	                backgroundImage: 'url(' + img + ')'
 	            };
 	
-	            return _react2.default.createElement('div', { style: style });
+	            return _react2.default.createElement(
+	                'div',
+	                { id: 'img', className: DV.state.imgLoaded ? 'show' : '', style: style, ref: 'img' },
+	                _react2.default.createElement('img', { src: img, onLoad: this.imgLoaded })
+	            );
 	        }
 	    }]);
 	
@@ -21715,7 +21728,7 @@
 	        key: 'get',
 	        value: function get() {
 	            // TODO
-	            // get a image from localStorage and return its base64 code.
+	            // get a image from localStorage and return its base code.
 	            return 'https://drscdn.500px.org/photo/201770877/q%3D80_m%3D2000/1497934ccca4d2bf5e0f827cbc95e82c';
 	        }
 	    }, {
@@ -21753,6 +21766,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _search = __webpack_require__(182);
+	
+	var _search2 = _interopRequireDefault(_search);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21773,7 +21790,11 @@
 	    _createClass(Widget, [{
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement('div', null);
+	            return _react2.default.createElement(
+	                'div',
+	                { id: 'widget' },
+	                _react2.default.createElement(_search2.default, null)
+	            );
 	        }
 	    }]);
 	
@@ -21781,6 +21802,102 @@
 	}(_react.Component);
 	
 	exports.default = Widget;
+
+/***/ },
+/* 182 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _chrome = __webpack_require__(183);
+	
+	var _chrome2 = _interopRequireDefault(_chrome);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Search = function (_Component) {
+	    _inherits(Search, _Component);
+	
+	    function Search() {
+	        _classCallCheck(this, Search);
+	
+	        return _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).apply(this, arguments));
+	    }
+	
+	    _createClass(Search, [{
+	        key: 'render',
+	        value: function render() {
+	            console.log(_chrome2.default.i18n('@@ui_locale'));
+	            console.log(_chrome2.default.i18n('searchBtn'));
+	            return _react2.default.createElement(
+	                'form',
+	                { id: 'search', action: '#' },
+	                _react2.default.createElement('input', {
+	                    type: 'text',
+	                    spellCheck: 'false',
+	                    autoComplete: 'off',
+	                    placeholder: _chrome2.default.i18n('searchBingPlaceholder') }),
+	                _react2.default.createElement('span', { title: _chrome2.default.i18n('searchBtn'), className: 'button fa fa-search' }),
+	                _react2.default.createElement(
+	                    'button',
+	                    { type: 'submit' },
+	                    _chrome2.default.i18n('searchBtn')
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Search;
+	}(_react.Component);
+	
+	exports.default = Search;
+
+/***/ },
+/* 183 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var Chrome = function () {
+	    function Chrome() {
+	        _classCallCheck(this, Chrome);
+	    }
+	
+	    _createClass(Chrome, null, [{
+	        key: "i18n",
+	        value: function i18n(fieldName) {
+	            return chrome.i18n.getMessage(fieldName);
+	        }
+	    }]);
+	
+	    return Chrome;
+	}();
+	
+	exports.default = Chrome;
 
 /***/ }
 /******/ ]);

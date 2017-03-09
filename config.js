@@ -10,6 +10,7 @@ module.exports = {
     path: {
         srcWatch: {
             json: ['src/**/*.json'],
+            font: ['src/font/*.*'],
             html: ['src/html/**/*.html'],
             img: ['src/img/**/*.*'],
             css: ['src/css/**/*.less'],
@@ -17,6 +18,7 @@ module.exports = {
         },
         srcCompile: {
             json: ['src/**/*.json'],
+            font: ['src/font/*.*'],
             html: ['src/html/*.html'],
             img: ['src/img/**/*.*'],
             css: ['src/css/*.less'],
@@ -24,6 +26,7 @@ module.exports = {
         },
         dist: {
             json: 'dist',
+            font: 'dist/font',
             html: 'dist/html',
             img: 'dist/img',
             css: 'dist/css',
