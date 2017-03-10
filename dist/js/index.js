@@ -64,6 +64,10 @@
 	
 	var _widget2 = _interopRequireDefault(_widget);
 	
+	var _setting = __webpack_require__(184);
+	
+	var _setting2 = _interopRequireDefault(_setting);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21908,6 +21912,51 @@
 	}();
 	
 	exports.default = Chrome;
+
+/***/ },
+/* 184 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var Setting = function () {
+	    function Setting() {
+	        _classCallCheck(this, Setting);
+	    }
+	
+	    _createClass(Setting, null, [{
+	        key: 'get',
+	        value: function get(keys, cb) {
+	            if (typeof keys === 'function') {
+	                cb = keys;
+	                keys = null;
+	            }
+	
+	            return chrome.storage.sync.get(keys, cb);
+	        }
+	    }, {
+	        key: 'set',
+	        value: function set(items, cb) {
+	            if (items === void 0) {
+	                throw new Error('The parameter items is required!');
+	            }
+	
+	            return chrome.storage.sync.get(items, cb);
+	        }
+	    }]);
+	
+	    return Setting;
+	}();
+	
+	exports.default = Setting;
 
 /***/ }
 /******/ ]);

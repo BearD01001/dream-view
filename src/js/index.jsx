@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+
 import Img from './component/img.jsx';
 import Widget from './component/widget.jsx';
+
+import Setting from './module/setting.jsx';
 
 class Index extends Component {
     constructor(args) {
