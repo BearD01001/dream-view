@@ -6,6 +6,7 @@ import Widget from './component/widget.jsx';
 
 import Setting from './module/setting.jsx';
 
+
 class Index extends Component {
     constructor(args) {
         super(args);

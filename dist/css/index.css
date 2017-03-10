@@ -2456,8 +2456,8 @@ a {
 }
 #search {
   position: absolute;
-  top: 50%;
-  right: 10%;
+  top: calc(33.3% - 29px);
+  left: calc(33.3% - 230px);
   font-size: 1.5em;
 }
 #search input {
@@ -2484,8 +2484,9 @@ a {
   opacity: .5;
 }
 #search .button {
-  position: relative;
-  left: -40px;
+  position: absolute;
+  top: 15px;
+  right: 20px;
   opacity: .3;
   cursor: pointer;
   transition: opacity .3s;
