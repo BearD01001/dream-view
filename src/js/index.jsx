@@ -9,7 +9,10 @@ class Index extends Component {
 
         this.img = {};
         this.state = {
-            imgLoaded: false
+            imgLoaded: false,
+            searchAction: 'http://www.bing.com/search',
+            searchName: 'q',
+            searchPlaceholder: 'Search Bing'
         }
         top.DV = this;
     }

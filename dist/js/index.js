@@ -82,7 +82,10 @@
 	
 	        _this.img = {};
 	        _this.state = {
-	            imgLoaded: false
+	            imgLoaded: false,
+	            searchAction: 'http://www.bing.com/search',
+	            searchName: 'q',
+	            searchPlaceholder: 'Search Bing'
 	        };
 	        top.DV = _this;
 	        return _this;
@@ -21841,22 +21844,29 @@
 	    }
 	
 	    _createClass(Search, [{
+	        key: 'gotoSearch',
+	        value: function gotoSearch() {
+	            this.refs.searchBtn.click();
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
-	            console.log(_chrome2.default.i18n('@@ui_locale'));
-	            console.log(_chrome2.default.i18n('searchBtn'));
 	            return _react2.default.createElement(
 	                'form',
-	                { id: 'search', action: '#' },
+	                { id: 'search', action: DV.state.searchAction },
 	                _react2.default.createElement('input', {
 	                    type: 'text',
+	                    name: DV.state.searchName,
 	                    spellCheck: 'false',
 	                    autoComplete: 'off',
-	                    placeholder: _chrome2.default.i18n('searchBingPlaceholder') }),
-	                _react2.default.createElement('span', { title: _chrome2.default.i18n('searchBtn'), className: 'button fa fa-search' }),
+	                    placeholder: DV.state.searchPlaceholder }),
+	                _react2.default.createElement('span', {
+	                    onClick: this.gotoSearch.bind(this),
+	                    title: _chrome2.default.i18n('searchBtn'),
+	                    className: 'button fa fa-search' }),
 	                _react2.default.createElement(
 	                    'button',
-	                    { type: 'submit' },
+	                    { type: 'submit', ref: 'searchBtn' },
 	                    _chrome2.default.i18n('searchBtn')
 	                )
 	            );

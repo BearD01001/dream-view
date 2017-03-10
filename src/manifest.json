@@ -6,6 +6,7 @@
     "author": "BearD01001",
     "homepage_url": "https://github.com/BearD01001/DreamView/",
     "default_locale": "en",
+    "offline_enabled": true,
     "icons": {
         "16": "img/dreamview16.png",
         "48": "img/dreamview48.png",
@@ -21,5 +22,12 @@
     },
     "chrome_url_overrides": {
         "newtab": "html/index.html"
-    }
+    },
+    "permissions": [
+        "geolocation",
+        "storage",
+        "alarms",
+        "topSites",
+        "chrome://favicon/"
+    ]
 }
