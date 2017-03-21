@@ -21673,10 +21673,13 @@
 	var Img = function (_Component) {
 	    _inherits(Img, _Component);
 	
-	    function Img() {
+	    function Img(props) {
 	        _classCallCheck(this, Img);
 	
-	        return _possibleConstructorReturn(this, (Img.__proto__ || Object.getPrototypeOf(Img)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (Img.__proto__ || Object.getPrototypeOf(Img)).call(this, props));
+	
+	        _this.img = _imgUtil2.default.get();
+	        return _this;
 	    }
 	
 	    _createClass(Img, [{
@@ -21694,15 +21697,14 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var img = _imgUtil2.default.get();
 	            var style = {
-	                backgroundImage: 'url(' + img + ')'
+	                backgroundImage: 'url(' + this.img + ')'
 	            };
 	
 	            return _react2.default.createElement(
 	                'div',
 	                { id: 'img', className: DV.state.imgLoaded ? 'show' : '', style: style, ref: 'img' },
-	                _react2.default.createElement('img', { src: img, onLoad: this.imgLoaded })
+	                _react2.default.createElement('img', { src: this.img, onLoad: this.imgLoaded })
 	            );
 	        }
 	    }]);
@@ -21736,7 +21738,12 @@
 	        value: function get() {
 	            // TODO
 	            // get a image from localStorage and return its base code.
-	            return 'https://drscdn.500px.org/photo/201770877/q%3D80_m%3D2000/1497934ccca4d2bf5e0f827cbc95e82c';
+	            var imgArr = ['http://drscdn.500px.org/photo/201770877/q%3D80_m%3D2000/1497934ccca4d2bf5e0f827cbc95e82c', 'http://drscdn.500px.org/photo/203901899/q%3D80_m%3D1500/77b15c809808aa8be31c53c34b6cd7e0', 'http://drscdn.500px.org/photo/203981097/q%3D80_m%3D1500/b97b38c63219e52a3f50edfc79d478e3', 'http://drscdn.500px.org/photo/203952215/q%3D80_m%3D1500/1b7704000384f38995db706d17e68d92', 'http://drscdn.500px.org/photo/203967705/q%3D80_m%3D1500/fc1daead83c1fdb904c93715b5009c7b', 'http://drscdn.500px.org/photo/203899787/q%3D80_m%3D1500_k%3D1/4f5eb830a65f597ca871d01b24ce3049', 'http://drscdn.500px.org/photo/203978799/q%3D80_m%3D1500/4cf026200cbf13ca3121db1444f47b21'],
+	                random = Math.floor(Math.random() * 10) % imgArr.length;
+	
+	            console.log(random);
+	
+	            return imgArr[random];
 	        }
 	    }, {
 	        key: 'fetch',
