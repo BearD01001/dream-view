@@ -28,6 +28,7 @@
         "storage",
         "alarms",
         "topSites",
-        "chrome://favicon/"
+        "chrome://favicon/",
+        "*://*.500px.org/*"
     ]
 }
