@@ -46,7 +46,6 @@ class ImgUtil {
             xhr.open('GET', uri, true);
             xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {
-                    console.log(xhr)
                     resolve(xhr.response);
                 }
             }
@@ -76,40 +75,46 @@ class ImgUtil {
 
             fileReader.readAsDataURL(img);
             fileReader.onload = e => {
-                Chrome.saveLocal({[`imgCache_${index}`]: e.target.result }, () => {
-                    console.log('Img saved!');
-                    Chrome.readLocal(['imgCache_1', 'imgCache_2', 'imgCache_3'], data => {
+                let data = {
+                    [`imgCache_${index}`]: e.target.result
+                };
+
+                Chrome.save(data).to('local').then(() => {
+                    console.info('Img saved.');
+                    let imgCache = ['imgCache_1', 'imgCache_2', 'imgCache_3'];
+
+                    Chrome.read(imgCache).from('local').then(data => {
                         console.log('Current images cache in local storage:');
                         console.log(data);
                     });
-                });
+                })
             };
         }
 
-        Chrome.readLocal('imgCacheNum', data => {
+        Chrome.read('imgCacheNum').from('local').then(data => {
             // 如果没有缓存，初始化并写入图片图片的 base 码
             if (data.imgCacheNum === 0 || data.imgCacheNum === void(0)) {
-                Chrome.saveLocal({ imgCacheNum: 1 });
+                Chrome.save({ imgCacheNum: 1 }).to('local');
                 saveImgToIndex(1);
             // 如果缓存数 < 4，直接写入缓存
             } else if (data.imgCacheNum < 4) {
-                Chrome.saveLocal({ imgCacheNum: ++data.imgCacheNum });
+                Chrome.save({ imgCacheNum: ++data.imgCacheNum }).to('local');
                 saveImgToIndex(data.imgCacheNum);
             // 如果缓存数已经达到阈值 3，则移动缓存后将新缓存写入最后一位，先进先出
             } else {
-                Chrome.readLocal(['imgCache_2', 'imgCache_3'], data => {
+                Chrome.read(['imgCache_2', 'imgCache_3']).from('local').then(data => {
                     let newCache = {
                         imgCache_1: data.imgCache_2,
-                        imgCache_2: data.imgCache_3,
+                        imgCache_2: data.imgCache_3
                     }
 
-                    Chrome.saveLocal(newCache, () => {
-                        console.log('Images cache shifted!')
+                    Chrome.save(newCache).to('local').then(() => {
+                        console.info('Images cache shifted!');
                         saveImgToIndex(3);
                     })
                 })
             }
-        })
+        });
     }
 }
 
