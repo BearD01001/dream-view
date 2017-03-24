@@ -1,4 +1,14 @@
+import Chrome from './chrome.jsx';
+
 class ImgUtil {
+    // static get() {
+    //     return new Promise((resolve, reject) => {
+    //         Chrome.readLocal('imgCache1', data => {
+    //             console.log(data);
+    //         })
+    //     });
+    // }
+
     static get() {
         // TODO
         // get a image from localStorage and return its base code.
@@ -23,57 +33,83 @@ class ImgUtil {
             random = Math.floor(Math.random() * 100) % imgArr.length;
 
         console.log(random);
-        this.fetch();
+        this._getImg(imgArr[random]);
 
         return imgArr[random];
+    }
+
+    static _ajax(uri, callback) {
+        new Promise((resolve, reject) => {
+            let xhr = new XMLHttpRequest();
+
+            xhr.responseType = 'blob';
+            xhr.open('GET', uri, true);
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    console.log(xhr)
+                    resolve(xhr.response);
+                }
+            }
+            xhr.send();
+        }).then(callback);
     }
 
     static fetch() {
         // TODO
         // fetch several images from the Internet.
-        this._ajax('https://500px.com/search?q=香港', data => {
-            console.log(data);
-        });
     }
 
-    static _ajax(uri, callback) {
-        return new Promise((resolve, reject) => {
-            let img = document.createElement('img');
-
-            img.width = 0;
-            img.height = 0;
-            img.onload = () => {
-                console.log(img);
-                resolve(callback);
-            }
-            img.onerror = (uri, data) => {
-                console.log(data);
-                resolve(callback);
-            }
-            var reader = new FileReader();
-            reader.readAsDataURL(uri);
-            reader.onload = function(e){
-                console.log(this.result);
-            }
-
-            img.src = uri;
-            document.body.appendChild(img);
-            // let xhr = new XMLHttpRequest();
-
-            // xhr.open('GET', uri, true);
-            // xhr.onreadystatechange = () => {
-            //     console.log(xhr.readyState)
-            //     if (xhr.readyState === 4) {
-            //         resolve(xhr.responseText);
-            //     }
-            // }
-            // xhr.send();
-        }).then(callback);
+    static _getImgList() {
+        // TODO
+        // get images list from api(todo)
     }
 
-    static _save(imgs) {
+    static _getImg(uri) {
+        this._ajax(uri, this._save);
+    }
+
+    static _save(img) {
         // TODO
         // save images data into localStorage, the type of parameter imgs maybe array.
+        let saveImgToIndex = index => {
+            let fileReader = new FileReader();
+
+            fileReader.readAsDataURL(img);
+            fileReader.onload = e => {
+                Chrome.saveLocal({[`imgCache_${index}`]: e.target.result }, () => {
+                    console.log('Img saved!');
+                    Chrome.readLocal(['imgCache_1', 'imgCache_2', 'imgCache_3'], data => {
+                        console.log('Current images cache in local storage:');
+                        console.log(data);
+                    });
+                });
+            };
+        }
+
+        Chrome.readLocal('imgCacheNum', data => {
+            // 如果没有缓存，初始化并写入图片图片的 base 码
+            if (data.imgCacheNum === 0 || data.imgCacheNum === void(0)) {
+                Chrome.saveLocal({ imgCacheNum: 1 });
+                saveImgToIndex(1);
+            // 如果缓存数 < 4，直接写入缓存
+            } else if (data.imgCacheNum < 4) {
+                Chrome.saveLocal({ imgCacheNum: ++data.imgCacheNum });
+                saveImgToIndex(data.imgCacheNum);
+            // 如果缓存数已经达到阈值 3，则移动缓存后将新缓存写入最后一位，先进先出
+            } else {
+                Chrome.readLocal(['imgCache_2', 'imgCache_3'], data => {
+                    let newCache = {
+                        imgCache_1: data.imgCache_2,
+                        imgCache_2: data.imgCache_3,
+                    }
+
+                    Chrome.saveLocal(newCache, () => {
+                        console.log('Images cache shifted!')
+                        saveImgToIndex(3);
+                    })
+                })
+            }
+        })
     }
 }
 
