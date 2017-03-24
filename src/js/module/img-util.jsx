@@ -33,9 +33,20 @@ class ImgUtil {
             random = Math.floor(Math.random() * 100) % imgArr.length;
 
         console.log(random);
-        this._getImg(imgArr[random]);
 
-        return imgArr[random];
+        return new Promise((resolve, reject) => {
+            Chrome.read('imgCache_1').from('local').then(data => {
+                if (data.imgCache_1) {
+                    resolve(data.imgCache_1);
+                    this._getImg(imgArr[random]);
+                } else {
+                    let defaultImg = imgArr[0];
+
+                    resolve(defaultImg);
+                    this._getImg(imgArr[random]);
+                }
+            })
+        });
     }
 
     static _ajax(uri, callback) {
@@ -105,7 +116,8 @@ class ImgUtil {
                 Chrome.read(['imgCache_2', 'imgCache_3']).from('local').then(data => {
                     let newCache = {
                         imgCache_1: data.imgCache_2,
-                        imgCache_2: data.imgCache_3
+                        imgCache_2: data.imgCache_3,
+                        imgCache_3: data.imgCache_1,
                     }
 
                     Chrome.save(newCache).to('local').then(() => {

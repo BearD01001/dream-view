@@ -5,26 +5,35 @@ class Img extends Component {
     constructor(props) {
         super(props);
         
-        this.img = imgUtil.get();
+        this.state = {
+            img: ''
+        }
     }
 
     imgLoaded() {
-        DV.setState({
-            imgLoaded: true
-        })
+        setTimeout(function() {
+            DV.setState({
+                imgLoaded: true
+            });
+        }, 500);
     }
 
     componentDidMount() {
         DV.img.DOM = this.refs.img;
+        imgUtil.get().then(img => {
+            this.setState({
+                img: img
+            });
+        });
     }
 
     render() {
         let style = {
-            backgroundImage: `url(${ this.img })`,
+            backgroundImage: `url(${ this.state.img })`,
         }
 
         return  <div id='img' className={ DV.state.imgLoaded ? 'show' : '' } style={ style } ref='img'>
-                    <img src={ this.img } onLoad={ this.imgLoaded } />
+                    <img src={ this.state.img } onLoad={ this.imgLoaded } />
                 </div>;
     }
 }
