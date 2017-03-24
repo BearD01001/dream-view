@@ -60,7 +60,7 @@
 	
 	var _img2 = _interopRequireDefault(_img);
 	
-	var _widget = __webpack_require__(181);
+	var _widget = __webpack_require__(182);
 	
 	var _widget2 = _interopRequireDefault(_widget);
 	
@@ -21678,33 +21678,44 @@
 	
 	        var _this = _possibleConstructorReturn(this, (Img.__proto__ || Object.getPrototypeOf(Img)).call(this, props));
 	
-	        _this.img = _imgUtil2.default.get();
+	        _this.state = {
+	            img: ''
+	        };
 	        return _this;
 	    }
 	
 	    _createClass(Img, [{
 	        key: 'imgLoaded',
 	        value: function imgLoaded() {
-	            DV.setState({
-	                imgLoaded: true
-	            });
+	            setTimeout(function () {
+	                DV.setState({
+	                    imgLoaded: true
+	                });
+	            }, 500);
 	        }
 	    }, {
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
+	            var _this2 = this;
+	
 	            DV.img.DOM = this.refs.img;
+	            _imgUtil2.default.get().then(function (img) {
+	                _this2.setState({
+	                    img: img
+	                });
+	            });
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var style = {
-	                backgroundImage: 'url(' + this.img + ')'
+	                backgroundImage: 'url(' + this.state.img + ')'
 	            };
 	
 	            return _react2.default.createElement(
 	                'div',
 	                { id: 'img', className: DV.state.imgLoaded ? 'show' : '', style: style, ref: 'img' },
-	                _react2.default.createElement('img', { src: this.img, onLoad: this.imgLoaded })
+	                _react2.default.createElement('img', { src: this.state.img, onLoad: this.imgLoaded })
 	            );
 	        }
 	    }]);
@@ -21716,6 +21727,158 @@
 
 /***/ },
 /* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _chrome = __webpack_require__(181);
+	
+	var _chrome2 = _interopRequireDefault(_chrome);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var ImgUtil = function () {
+	    function ImgUtil() {
+	        _classCallCheck(this, ImgUtil);
+	    }
+	
+	    _createClass(ImgUtil, null, [{
+	        key: 'get',
+	
+	        // static get() {
+	        //     return new Promise((resolve, reject) => {
+	        //         Chrome.readLocal('imgCache1', data => {
+	        //             console.log(data);
+	        //         })
+	        //     });
+	        // }
+	
+	        value: function get() {
+	            var _this = this;
+	
+	            // TODO
+	            // get a image from localStorage and return its base code.
+	            var imgArr = ['http://drscdn.500px.org/photo/201770877/q%3D80_m%3D2000/1497934ccca4d2bf5e0f827cbc95e82c', 'http://drscdn.500px.org/photo/203981097/q%3D80_m%3D1500/b97b38c63219e52a3f50edfc79d478e3', 'http://drscdn.500px.org/photo/203952215/q%3D80_m%3D1500/1b7704000384f38995db706d17e68d92', 'http://drscdn.500px.org/photo/203967705/q%3D80_m%3D1500/fc1daead83c1fdb904c93715b5009c7b', 'http://drscdn.500px.org/photo/203899787/q%3D80_m%3D1500_k%3D1/4f5eb830a65f597ca871d01b24ce3049', 'http://drscdn.500px.org/photo/203978799/q%3D80_m%3D1500/4cf026200cbf13ca3121db1444f47b21', 'http://drscdn.500px.org/photo/204273521/q%3D80_m%3D1500/f2fdb460835f17a79aa1017f4f47881c', 'http://drscdn.500px.org/photo/204299989/q%3D80_m%3D1500/0b35a58f77a237088e348efdb251a6fb', 'http://drscdn.500px.org/photo/204348975/q%3D80_m%3D1500/d8286d0c415d3fb805175237625ce6f3', 'http://drscdn.500px.org/photo/204369769/q%3D80_m%3D1500/2286977504b8507e450ce0f6990e3d04', 'http://drscdn.500px.org/photo/204326695/q%3D80_m%3D1500/1aa8de1d48c69f73bd7b8442d5cb4bb4', 'http://drscdn.500px.org/photo/204303905/q%3D80_m%3D1500/0d8672e50b03310d384781c4d964bf39', 'http://drscdn.500px.org/photo/204347173/q%3D80_m%3D1500/2d8095f33b82ba493726fc65f2fff083', 'http://drscdn.500px.org/photo/22859181/q%3D80_m%3D1500/e83aad64d5a5d603e1e7b3dc38d8a343', 'http://drscdn.500px.org/photo/64846081/q%3D80_m%3D1500/dc9c2674d582a5d29242d281ce1ed2cf', 'http://drscdn.500px.org/photo/203971135/q%3D80_m%3D1000/a387aaaa04f658a98a9ec8a425bbec60'],
+	                random = Math.floor(Math.random() * 100) % imgArr.length;
+	
+	            console.log(random);
+	
+	            return new Promise(function (resolve, reject) {
+	                _chrome2.default.read('imgCache_1').from('local').then(function (data) {
+	                    if (data.imgCache_1) {
+	                        resolve(data.imgCache_1);
+	                        _this._getImg(imgArr[random]);
+	                    } else {
+	                        var defaultImg = imgArr[0];
+	
+	                        resolve(defaultImg);
+	                        _this._getImg(imgArr[random]);
+	                    }
+	                });
+	            });
+	        }
+	    }, {
+	        key: '_ajax',
+	        value: function _ajax(uri, callback) {
+	            new Promise(function (resolve, reject) {
+	                var xhr = new XMLHttpRequest();
+	
+	                xhr.responseType = 'blob';
+	                xhr.open('GET', uri, true);
+	                xhr.onreadystatechange = function () {
+	                    if (xhr.readyState === 4) {
+	                        resolve(xhr.response);
+	                    }
+	                };
+	                xhr.send();
+	            }).then(callback);
+	        }
+	    }, {
+	        key: 'fetch',
+	        value: function fetch() {
+	            // TODO
+	            // fetch several images from the Internet.
+	        }
+	    }, {
+	        key: '_getImgList',
+	        value: function _getImgList() {
+	            // TODO
+	            // get images list from api(todo)
+	        }
+	    }, {
+	        key: '_getImg',
+	        value: function _getImg(uri) {
+	            this._ajax(uri, this._save);
+	        }
+	    }, {
+	        key: '_save',
+	        value: function _save(img) {
+	            // TODO
+	            // save images data into localStorage, the type of parameter imgs maybe array.
+	            var saveImgToIndex = function saveImgToIndex(index) {
+	                var fileReader = new FileReader();
+	
+	                fileReader.readAsDataURL(img);
+	                fileReader.onload = function (e) {
+	                    var data = _defineProperty({}, 'imgCache_' + index, e.target.result);
+	
+	                    _chrome2.default.save(data).to('local').then(function () {
+	                        console.info('Img saved.');
+	                        var imgCache = ['imgCache_1', 'imgCache_2', 'imgCache_3'];
+	
+	                        _chrome2.default.read(imgCache).from('local').then(function (data) {
+	                            console.log('Current images cache in local storage:');
+	                            console.log(data);
+	                        });
+	                    });
+	                };
+	            };
+	
+	            _chrome2.default.read('imgCacheNum').from('local').then(function (data) {
+	                // 如果没有缓存，初始化并写入图片图片的 base 码
+	                if (data.imgCacheNum === 0 || data.imgCacheNum === void 0) {
+	                    _chrome2.default.save({ imgCacheNum: 1 }).to('local');
+	                    saveImgToIndex(1);
+	                    // 如果缓存数 < 4，直接写入缓存
+	                } else if (data.imgCacheNum < 4) {
+	                    _chrome2.default.save({ imgCacheNum: ++data.imgCacheNum }).to('local');
+	                    saveImgToIndex(data.imgCacheNum);
+	                    // 如果缓存数已经达到阈值 3，则移动缓存后将新缓存写入最后一位，先进先出
+	                } else {
+	                    _chrome2.default.read(['imgCache_2', 'imgCache_3']).from('local').then(function (data) {
+	                        var newCache = {
+	                            imgCache_1: data.imgCache_2,
+	                            imgCache_2: data.imgCache_3,
+	                            imgCache_3: data.imgCache_1
+	                        };
+	
+	                        _chrome2.default.save(newCache).to('local').then(function () {
+	                            console.info('Images cache shifted!');
+	                            saveImgToIndex(3);
+	                        });
+	                    });
+	                }
+	            });
+	        }
+	    }]);
+	
+	    return ImgUtil;
+	}();
+	
+	exports.default = ImgUtil;
+
+/***/ },
+/* 181 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21728,84 +21891,78 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var ImgUtil = function () {
-	    function ImgUtil() {
-	        _classCallCheck(this, ImgUtil);
+	var Chrome = function () {
+	    function Chrome() {
+	        _classCallCheck(this, Chrome);
 	    }
 	
-	    _createClass(ImgUtil, null, [{
-	        key: 'get',
-	        value: function get() {
-	            // TODO
-	            // get a image from localStorage and return its base code.
-	            var imgArr = ['http://drscdn.500px.org/photo/201770877/q%3D80_m%3D2000/1497934ccca4d2bf5e0f827cbc95e82c', 'http://drscdn.500px.org/photo/203981097/q%3D80_m%3D1500/b97b38c63219e52a3f50edfc79d478e3', 'http://drscdn.500px.org/photo/203952215/q%3D80_m%3D1500/1b7704000384f38995db706d17e68d92', 'http://drscdn.500px.org/photo/203967705/q%3D80_m%3D1500/fc1daead83c1fdb904c93715b5009c7b', 'http://drscdn.500px.org/photo/203899787/q%3D80_m%3D1500_k%3D1/4f5eb830a65f597ca871d01b24ce3049', 'http://drscdn.500px.org/photo/203978799/q%3D80_m%3D1500/4cf026200cbf13ca3121db1444f47b21', 'http://drscdn.500px.org/photo/204273521/q%3D80_m%3D1500/f2fdb460835f17a79aa1017f4f47881c', 'http://drscdn.500px.org/photo/204299989/q%3D80_m%3D1500/0b35a58f77a237088e348efdb251a6fb', 'http://drscdn.500px.org/photo/204348975/q%3D80_m%3D1500/d8286d0c415d3fb805175237625ce6f3', 'http://drscdn.500px.org/photo/204369769/q%3D80_m%3D1500/2286977504b8507e450ce0f6990e3d04', 'http://drscdn.500px.org/photo/204326695/q%3D80_m%3D1500/1aa8de1d48c69f73bd7b8442d5cb4bb4', 'http://drscdn.500px.org/photo/204303905/q%3D80_m%3D1500/0d8672e50b03310d384781c4d964bf39', 'http://drscdn.500px.org/photo/204347173/q%3D80_m%3D1500/2d8095f33b82ba493726fc65f2fff083', 'http://drscdn.500px.org/photo/22859181/q%3D80_m%3D1500/e83aad64d5a5d603e1e7b3dc38d8a343', 'http://drscdn.500px.org/photo/64846081/q%3D80_m%3D1500/dc9c2674d582a5d29242d281ce1ed2cf', 'http://drscdn.500px.org/photo/203971135/q%3D80_m%3D1000/a387aaaa04f658a98a9ec8a425bbec60'],
-	                random = Math.floor(Math.random() * 100) % imgArr.length;
+	    _createClass(Chrome, null, [{
+	        key: 'i18n',
 	
-	            console.log(random);
-	            this.fetch();
-	
-	            return imgArr[random];
+	        /**
+	         * 读取本地化语言包字段
+	         * @param  {String} fieldName 字段名称
+	         * @return {[type]}           本地化字段译文
+	         */
+	        value: function i18n(fieldName) {
+	            return chrome.i18n.getMessage(fieldName);
 	        }
 	    }, {
-	        key: 'fetch',
-	        value: function fetch() {
-	            // TODO
-	            // fetch several images from the Internet.
-	            this._ajax('https://500px.com/search?q=香港', function (data) {
-	                console.log(data);
+	        key: '_storageCURD',
+	        value: function _storageCURD(storageType, method, data) {
+	            if (storageType === void 0) {
+	                throw new Error('The parameter storageType[String<local|sync>] is required!');
+	            } else if (storageType !== 'local' && storageType !== 'sync') {
+	                throw new Error('The value of parameter storageType should be `local` or `sync`.');
+	            }
+	
+	            return new Promise(function (resolve, reject) {
+	                chrome.storage[storageType][method](data ? data : resolve, data ? resolve : null);
 	            });
 	        }
 	    }, {
-	        key: '_ajax',
-	        value: function _ajax(uri, callback) {
-	            return new Promise(function (resolve, reject) {
-	                var img = document.createElement('img');
+	        key: 'save',
+	        value: function save(data) {
+	            var _this = this;
 	
-	                img.width = 0;
-	                img.height = 0;
-	                img.onload = function () {
-	                    console.log(img);
-	                    resolve(callback);
-	                };
-	                img.onerror = function (uri, data) {
-	                    console.log(data);
-	                    resolve(callback);
-	                };
-	                var reader = new FileReader();
-	                reader.readAsDataURL(uri);
-	                reader.onload = function (e) {
-	                    console.log(this.result);
-	                };
+	            if (data === void 0) {
+	                throw new Error('The parameter data[Object] is required!');
+	            } else if (Object.prototype.toString.call(data) !== '[object Object]') {
+	                throw new TypeError('The type of data must be object!');
+	            }
 	
-	                img.src = uri;
-	                document.body.appendChild(img);
-	                // let xhr = new XMLHttpRequest();
-	
-	                // xhr.open('GET', uri, true);
-	                // xhr.onreadystatechange = () => {
-	                //     console.log(xhr.readyState)
-	                //     if (xhr.readyState === 4) {
-	                //         resolve(xhr.responseText);
-	                //     }
-	                // }
-	                // xhr.send();
-	            }).then(callback);
+	            return {
+	                to: function to(storageType) {
+	                    return _this._storageCURD(storageType, 'set', data);
+	                }
+	            };
 	        }
 	    }, {
-	        key: '_save',
-	        value: function _save(imgs) {
-	            // TODO
-	            // save images data into localStorage, the type of parameter imgs maybe array.
+	        key: 'read',
+	        value: function read() {
+	            var _this2 = this;
+	
+	            var keys = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+	
+	            if (keys !== null && typeof keys !== 'string' && Object.prototype.toString.call(keys) !== '[object Array]') {
+	                throw new TypeError('The parameter keys should be null, string or array.');
+	            }
+	
+	            return {
+	                from: function from(storageType) {
+	                    return _this2._storageCURD(storageType, 'get', keys);
+	                }
+	            };
 	        }
 	    }]);
 	
-	    return ImgUtil;
+	    return Chrome;
 	}();
 	
-	exports.default = ImgUtil;
+	exports.default = Chrome;
 
 /***/ },
-/* 181 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21820,7 +21977,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _search = __webpack_require__(182);
+	var _search = __webpack_require__(183);
 	
 	var _search2 = _interopRequireDefault(_search);
 	
@@ -21858,7 +22015,7 @@
 	exports.default = Widget;
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21873,7 +22030,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _chrome = __webpack_require__(183);
+	var _chrome = __webpack_require__(181);
 	
 	var _chrome2 = _interopRequireDefault(_chrome);
 	
@@ -21928,37 +22085,6 @@
 	}(_react.Component);
 	
 	exports.default = Search;
-
-/***/ },
-/* 183 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	var Chrome = function () {
-	    function Chrome() {
-	        _classCallCheck(this, Chrome);
-	    }
-	
-	    _createClass(Chrome, null, [{
-	        key: "i18n",
-	        value: function i18n(fieldName) {
-	            return chrome.i18n.getMessage(fieldName);
-	        }
-	    }]);
-	
-	    return Chrome;
-	}();
-	
-	exports.default = Chrome;
 
 /***/ },
 /* 184 */
