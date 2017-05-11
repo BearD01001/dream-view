@@ -2497,6 +2497,59 @@ a {
 #widget {
   position: relative;
   height: 100vh;
+  overflow: hidden;
+}
+@font-face {
+  font-family: 'clock text';
+  src: url('../font/clock-text.ttf') format('truetype');
+}
+#clock.default {
+  position: absolute;
+  right: 5rem;
+  bottom: 1rem;
+  width: 18rem;
+  color: #fff;
+  font-family: 'clock text';
+  text-shadow: 0 0 10px #2d2d2d;
+  cursor: default;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+#clock.default .colon-2,
+#clock.default .ap,
+#clock.default .year,
+#clock.default .dayOfWeek,
+#clock.default .dayOfYear {
+  display: none;
+}
+#clock.default .hour,
+#clock.default .minute,
+#clock.default .colon-1 {
+  display: inline-block;
+  font-size: 5rem;
+}
+#clock.default .minute {
+  padding-right: 1rem;
+}
+#clock.default .second {
+  position: absolute;
+  top: -4rem;
+  right: -3rem;
+  width: 12rem;
+  font-size: 8em;
+  opacity: .3;
+  z-index: -1;
+  transform: scale(1.5, 0.8);
+}
+#clock.default .month,
+#clock.default .day {
+  display: inline-block;
+  text-align: right;
+}
+#clock.default .day {
+  margin-left: .2rem;
 }
 body {
   background-color: #000;

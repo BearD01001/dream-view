@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'clock text';
+    src: url('../font/clock-text.ttf') format('truetype');
+}
+#clock {
+    &.default {
+        position: absolute;
+        right: 5rem;
+        bottom: 1rem;
+        width: 18rem;
+        color: #fff;
+        font-family: 'clock text';
+        text-shadow: 0 0 10px #2d2d2d;
+        cursor: default;
+        user-select: none;
+
+        .colon-2, .ap, .year, .dayOfWeek, .dayOfYear {
+            display: none;
+        }
+        .hour, .minute, .colon-1 {
+            display: inline-block;
+            font-size: 5rem;
+        }
+        .minute {
+            padding-right: 1rem;
+        }
+        .second {
+            position: absolute;
+            top: -4rem;
+            right: -3rem;
+            width: 12rem;
+            font-size: 8em;
+            opacity: .3;
+            z-index: -1;
+            transform: scale(1.5, .8);
+        }
+        .month, .day {
+            display: inline-block;
+            text-align: right;
+        }
+        .day {
+            margin-left: .2rem;
+        }
+    }
+}
