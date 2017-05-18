@@ -2505,9 +2505,9 @@ a {
 }
 #clock.default {
   position: absolute;
-  right: 5rem;
+  right: 0;
   bottom: 1rem;
-  width: 18rem;
+  width: 22rem;
   color: #fff;
   font-family: 'clock text';
   text-shadow: 0 0 10px #2d2d2d;
@@ -2536,7 +2536,7 @@ a {
 #clock.default .second {
   position: absolute;
   top: -4rem;
-  right: -3rem;
+  right: 3rem;
   width: 12rem;
   font-size: 8em;
   opacity: .3;
