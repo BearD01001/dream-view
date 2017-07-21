@@ -41,7 +41,7 @@ module.exports = {
         write: {
             debug: true
         },
-        path: path.resolve(rootPath, '_srcmap')
+        path: path.resolve(rootPath, 'maps')
     },
 
     less: {

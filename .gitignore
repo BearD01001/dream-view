@@ -38,3 +38,6 @@ jspm_packages
 
 # webpack source map files
 *.map
+
+# sourcemaps
+maps
