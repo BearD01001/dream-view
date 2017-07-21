@@ -9,7 +9,7 @@ module.exports = {
         path: dist_path,
         filename: 'index.js'
     },
-    devtool: '#cheap-module-eval-source-map',
+    devtool: 'cheap-source-map',
     module: {
         loaders: [
             {
