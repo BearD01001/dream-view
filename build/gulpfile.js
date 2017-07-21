@@ -13,6 +13,8 @@ var path         = require('path'),
 var CONFIG       = require('./config');
 var WEBPACK      = require('./webpack.config');
 
+process.chdir('../');
+
 function htmlCopy() {
     return gulp.src(CONFIG.path.srcCompile.html)
                .pipe(gulp.dest(CONFIG.path.dist.html));

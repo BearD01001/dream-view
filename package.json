@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "a tab extension of chrome.",
   "main": "manifest.json",
+  "scripts": {
+    "start": "gulp --gulpfile=build/gulpfile.js"
+  },
   "repository": "git@github.com:BearD01001/DreamView.git",
   "author": "BearD01001 <d@vsv.io>",
   "license": "Apache-2.0",
