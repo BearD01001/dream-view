@@ -96,7 +96,7 @@ function htmlSign() {
         gulp.src(CONFIG.path.srcWatch.js)
             .pipe(gWebpack(WEBPACK, null, function(err, stats) {
                 /* 在 gulp-webpack 插件的回调函数中更新 html 引用指纹，此时 js 文件已经打包完成并输出到指定目录 */
-                console.log('[' + moment().format('HH:mm:ss').grey + '] Strating \'' + 'build js > sign html'.cyan + '\'...');
+                console.log('[' + moment().format('HH:mm:ss').grey + '] Starting \'' + 'build js > sign html'.cyan + '\'...');
                 
                 // 异常捕获
                 if (stats.compilation.errors.length) {
