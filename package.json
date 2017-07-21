@@ -6,8 +6,15 @@
   "scripts": {
     "start": "gulp --gulpfile=build/gulpfile.js"
   },
-  "repository": "git@github.com:BearD01001/DreamView.git",
-  "author": "BearD01001 <d@vsv.io>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BearD01001/DreamView.git"
+  },
+  "keywords": [
+    "chrome",
+    "extensions"
+  ],
+  "author": "BearD01001 <dino@beard.ink>",
   "license": "Apache-2.0",
   "devDependencies": {
     "babel-loader": "^6.3.2",
