@@ -34,7 +34,6 @@ class ImgUtil {
                 'http://drscdn.500px.org/photo/205648235/q%3D80_m%3D1500/afa534567ab40d7186acf7568f5d92d6',
                 'http://drscdn.500px.org/photo/205683423/q%3D80_m%3D1500/9956f96e09bd743196e05722856d9d60',
                 'http://drscdn.500px.org/photo/205667905/q%3D80_m%3D1500/164b28f8298c897e5fc378089d61a0aa',
-                'http://drscdn.500px.org/photo/205697579/q%3D80_m%3D1500/de2c0595adcba02b3b882f38cdb67a24',
                 'http://drscdn.500px.org/photo/205680927/q%3D80_m%3D1500/ca28d4b7764f6c93548d48078f9dfe1e',
                 'http://drscdn.500px.org/photo/205644471/q%3D80_m%3D1500/8cf66c6ce71f86e85c448f50ae244f35',
                 'http://drscdn.500px.org/photo/205631131/q%3D80_m%3D1500/a1cc34516415578597050231a611269e',
@@ -60,6 +59,7 @@ class ImgUtil {
     }
 
     static _ajax(uri, callback) {
+        console.log(`Fetching image: ${uri}`)
         new Promise((resolve, reject) => {
             let xhr = new XMLHttpRequest();
 
@@ -67,6 +67,7 @@ class ImgUtil {
             xhr.open('GET', uri, true);
             xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {
+                    console.log('Image fetched: ', xhr.response)
                     resolve(xhr.response);
                 }
             }
@@ -101,12 +102,11 @@ class ImgUtil {
                 };
 
                 Chrome.save(data).to('local').then(() => {
-                    console.info('Img saved.');
+                    console.info('Image saved.');
                     let imgCache = ['imgCache_1', 'imgCache_2', 'imgCache_3'];
 
                     Chrome.read(imgCache).from('local').then(data => {
-                        console.log('Current images cache in local storage:');
-                        console.log(data);
+                        console.log('Images cache in localStorage:', data);
                     });
                 })
             };
