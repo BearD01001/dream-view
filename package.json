@@ -4,7 +4,8 @@
   "description": "a tab extension of chrome.",
   "main": "manifest.json",
   "scripts": {
-    "start": "gulp --gulpfile=build/gulpfile.js"
+    "start": "gulp --gulpfile=build/gulpfile.js",
+    "build": "gulp build --gulpfile=build/gulpfile.js"
   },
   "repository": {
     "type": "git",
