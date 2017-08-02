@@ -1,6 +1,6 @@
 {
-  "name": "DreamView",
-  "version": "1.0.0",
+  "name": "dream view",
+  "version": "0.0.1",
   "description": "a tab extension of chrome.",
   "main": "manifest.json",
   "scripts": {
