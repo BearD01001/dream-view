@@ -1,5 +1,5 @@
 {
-  "name": "dream view",
+  "name": "dream-view",
   "version": "0.0.1",
   "description": "a tab extension of chrome.",
   "main": "manifest.json",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BearD01001/DreamView.git"
+    "url": "git+https://github.com/BearD01001/dream-view.git"
   },
   "keywords": [
     "chrome",
