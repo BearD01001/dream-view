@@ -2,9 +2,9 @@ import constants from './constants'
 
 function reducer (state, action) {
   switch (action) {
-    case constants.MAP: {
+    case constants.OPEN_SETTING_DIALOG: {
       return Object.assign({}, state, {
-        newStateProp: 1
+        settingDialog: action.status
       })
     }
     default: {
@@ -12,3 +12,5 @@ function reducer (state, action) {
     }
   }
 }
+
+export default reducer
