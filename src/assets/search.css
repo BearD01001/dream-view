@@ -1,0 +1,46 @@
+#search {
+    position: absolute;
+    top: calc(33.3% - 29px);
+    left: calc(33.3% - 230px);
+    font-size: 1.5em;
+}
+#search input {
+  width: 420px;
+  padding: 15px 20px;
+  color: inherit;
+  font-size: inherit;
+  opacity: .6;
+  outline: 0;
+  border: 0;
+  border-radius: 3px;
+  transition: opacity .3s;
+}
+
+#search input:hover {
+  opacity: .7;
+}
+
+#search input:hover + .button {
+  opacity: .4;
+}
+
+#search input:focus {
+  opacity: .8;
+}
+
+#search input:focus + .button {
+  opacity: .5;
+}
+
+#search .button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  opacity: .3;
+  cursor: pointer;
+  transition: opacity .3s;
+}
+
+#search button {
+  display: none;
+}
