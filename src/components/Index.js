@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import Landscape from './landscape'
 import SearchBar from './search-bar'
@@ -16,4 +17,8 @@ class Index extends Component {
   }
 }
 
-export default Index
+function mapStateToProps (state) {
+  return state
+}
+
+export default connect(mapStateToProps)(Index)
