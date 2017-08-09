@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'clock-text';
-    src: url('/public/clock-text.ttf') format('truetype');
+    src: url('./clock-text.ttf') format('truetype');
 }
 #clock.default {
   position: absolute;
-  right: 0;
+  right: 1rem;
   bottom: 1rem;
   width: 22rem;
   color: #fff;

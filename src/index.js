@@ -5,6 +5,7 @@ import registerServiceWorker from './registerServiceWorker'
 import configureStore from './redux/store'
 import { Provider } from 'react-redux'
 import 'element-theme-default'
+import './assets/reset.css'
 
 let initailState = {
   settingDialog: false
@@ -12,7 +13,7 @@ let initailState = {
 let store = configureStore(initailState)
 
 ReactDOM.render(
-  <Provider store = { store }>
+  <Provider store={ store }>
     <Index />
   </Provider>,
   document.getElementById('root')
