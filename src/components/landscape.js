@@ -6,17 +6,20 @@ class Landscape extends Component {
     imgLoaded: false,
     imgData: void(0)
   }
-  async componentWillMount() {
-    let imgData = await ImgUtil.get()
+
+  async componentWillMount () {
+    let imgData = await ImgUtil.getUrl()
 
     this.refs.img.src = imgData
     this.setState({ imgData })
   }
+
   imgLoaded () {
     setTimeout(() => {
       this.setState({ imgLoaded: true })
     }, 500)
   }
+
   render() {
     let style = {
       backgroundImage: this.state.imgData ? `url(${ this.state.imgData })` : 'none',
@@ -32,13 +35,16 @@ class Landscape extends Component {
       zIndex: -1,
       transition: 'opacity .5s'
     }
+    let hidden = {
+      display: 'none'
+    }
     
     return (
       <div style={ style }>
         <img
           ref='img'
           onLoad={ this.imgLoaded.bind(this) }
-          style={{ display: 'none' }}
+          style={ hidden }
           alt='Dream view'
         />
       </div>
