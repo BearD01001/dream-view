@@ -5,6 +5,7 @@ import registerServiceWorker from './registerServiceWorker'
 import configureStore from './redux/store'
 import { Provider } from 'react-redux'
 import 'element-theme-default'
+import 'typeface-roboto'
 import './assets/reset.css'
 
 let initailState = {
