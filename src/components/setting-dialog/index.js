@@ -3,20 +3,14 @@ import Drawer from 'material-ui/Drawer'
 // import styleInjector from 'react-jss'
 import SwipeableViews from 'react-swipeable-views'
 import Tabs, { Tab } from 'material-ui/Tabs'
-import AppBar from 'material-ui/AppBar'
-import MovieFilter from 'material-ui-icons/MovieFilter'
-import Cloud from 'material-ui-icons/Cloud'
-import Search from 'material-ui-icons/Search'
+import IconMovieFilter from 'material-ui-icons/MovieFilter'
+import IconCloud from 'material-ui-icons/Cloud'
+import IconPublic from 'material-ui-icons/Public'
 
 import Vision from './vision'
+import Weather from './weather'
+import Search from './search'
 
-// const styles = {
-//   label: {
-//     color: '#ddd'
-//   }
-// }
-
-// @styleInjector(styles)
 class SettingDialog extends React.Component {
   state = {
     open: true,
@@ -39,21 +33,22 @@ class SettingDialog extends React.Component {
         anchor='right'
         open={this.state.open}
       >
-        <AppBar color='blueGrey'>
-          <Tabs
-            index={this.state.active}
-            onChange={this.changeTab}
-            centered
-          >
-            <Tab icon={<MovieFilter />} />
-            <Tab icon={<Cloud />} />
-            <Tab icon={<Search />} />
-          </Tabs>
-        </AppBar>
-        <SwipeableViews style={{paddingTop: 50}} index={this.state.active}>
+        <Tabs
+          value={this.state.active}
+          index={this.state.active}
+          onChange={this.changeTab}
+          indicatorColor='primary'
+          textColor='primary'
+          centered
+        >
+          <Tab icon={<IconMovieFilter />} />
+          <Tab icon={<IconCloud />} />
+          <Tab icon={<IconPublic />} />
+        </Tabs>
+        <SwipeableViews index={this.state.active}>
           <Vision />
-          <div>222222222222222222222222222222222222222222222222</div>
-          <div>333</div>
+          <Weather />
+          <Search />
         </SwipeableViews>
       </Drawer>
     )
