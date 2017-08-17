@@ -1,10 +1,9 @@
 import React from 'react'
 import Drawer from 'material-ui/Drawer'
-// import styleInjector from 'react-jss'
 import SwipeableViews from 'react-swipeable-views'
 import Tabs, { Tab } from 'material-ui/Tabs'
 import IconMovieFilter from 'material-ui-icons/MovieFilter'
-import IconCloud from 'material-ui-icons/Cloud'
+import IconWbSunny from 'material-ui-icons/WbSunny'
 import IconPublic from 'material-ui-icons/Public'
 
 import Vision from './vision'
@@ -14,7 +13,7 @@ import Search from './search'
 class SettingDialog extends React.Component {
   state = {
     open: true,
-    active: 0,
+    active: 0
   }
 
   closeDialog = () => this.setState({ open: false })
@@ -29,21 +28,18 @@ class SettingDialog extends React.Component {
 
   render() {
     return (
-      <Drawer
-        anchor='right'
-        open={this.state.open}
-      >
+      <Drawer anchor="right" open={this.state.open}>
         <Tabs
           value={this.state.active}
           index={this.state.active}
           onChange={this.changeTab}
-          indicatorColor='primary'
-          textColor='primary'
+          indicatorColor="primary"
+          textColor="primary"
           centered
         >
-          <Tab icon={<IconMovieFilter />} />
-          <Tab icon={<IconCloud />} />
-          <Tab icon={<IconPublic />} />
+          <Tab icon={<IconMovieFilter />} label="Vision" />
+          <Tab icon={<IconWbSunny />} label="Weather" />
+          <Tab icon={<IconPublic />} label="Search Engine" />
         </Tabs>
         <SwipeableViews index={this.state.active}>
           <Vision />
