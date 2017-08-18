@@ -4,22 +4,91 @@ import Divider from 'material-ui/Divider'
 import Form, { FormField, CheckboxWithLabel, RadioWithLabel } from './form'
 
 class Vision extends React.Component {
-  checkboxClick = () => {
-    console.log(111)
+  state = {
+    imageOrigin: [],
+    cacheNum: '3',
+    updateInterval: '0'
+  }
+
+  constructor() {
+    super()
+    const settingVisionSaved = localStorage.getItem('setting-vision')
+
+    if (settingVisionSaved) {
+      this.state = Object.assign(this.state, JSON.parse(settingVisionSaved))
+    }
+  }
+
+  saveVisionSetting() {
+    this.setState(state => {
+      localStorage.setItem('setting-vision', JSON.stringify(state))
+      return state
+    })
+  }
+
+  imageOriginChange = ({ target }) => {
+    if (target.checked) {
+      this.setState(preState => ({
+        imageOrigin: [...preState.imageOrigin, target.value]
+      }))
+    } else {
+      this.setState(preState => ({
+        imageOrigin: preState.imageOrigin.filter(v => v !== target.value)
+      }))
+    }
+    this.saveVisionSetting()
+  }
+
+  cacheNumChange = (event, value) => {
+    this.setState({
+      cacheNum: value
+    })
+    this.saveVisionSetting()
+  }
+
+  updateIntervalChange = (event, value) => {
+    this.setState({
+      updateInterval: value
+    })
+    this.saveVisionSetting()
   }
 
   render() {
     return (
       <Form>
         <FormField label="图片源">
-          <CheckboxWithLabel label="500px" onClick={this.checkboxClick} />
-          <CheckboxWithLabel label="Bing" onClick={this.checkboxClick} />
-          <CheckboxWithLabel label="Filckr" onClick={this.checkboxClick} />
-          <CheckboxWithLabel label="Google Art" onClick={this.checkboxClick} />
+          <CheckboxWithLabel
+            label="500px"
+            value="500px"
+            checked={this.state.imageOrigin.includes('500px')}
+            onClick={this.imageOriginChange}
+          />
+          <CheckboxWithLabel
+            label="Bing"
+            value="bing"
+            checked={this.state.imageOrigin.includes('bing')}
+            onClick={this.imageOriginChange}
+          />
+          <CheckboxWithLabel
+            label="Filckr"
+            value="filckr"
+            checked={this.state.imageOrigin.includes('filckr')}
+            onClick={this.imageOriginChange}
+          />
+          <CheckboxWithLabel
+            label="Google Art"
+            value="google"
+            checked={this.state.imageOrigin.includes('google')}
+            onClick={this.imageOriginChange}
+          />
         </FormField>
         <Divider />
         <FormField label="缓存数量">
-          <RadioGroup name="chche-num">
+          <RadioGroup
+            name="cache-num"
+            selectedValue={this.state.cacheNum}
+            onChange={this.cacheNumChange}
+          >
             <RadioWithLabel label="3" value="3" />
             <RadioWithLabel label="5" value="5" />
             <RadioWithLabel label="10" value="10" />
@@ -27,7 +96,11 @@ class Vision extends React.Component {
         </FormField>
         <Divider />
         <FormField label="更新间隔">
-          <RadioGroup name="update-interval">
+          <RadioGroup
+            name="update-interval"
+            selectedValue={this.state.updateInterval}
+            onChange={this.updateIntervalChange}
+          >
             <RadioWithLabel label="智能" value="0" />
             <RadioWithLabel label="每分钟" value="1" />
             <RadioWithLabel label="每小时" value="2" />
