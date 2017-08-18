@@ -1,18 +1,8 @@
-import Radio from 'material-ui/Radio'
-import styleInjector from 'react-jss'
-import styles from './styles'
+import React from 'react'
+import InputCorWithLabel from './input-cor-with-label'
 
-const RadioWithLabel = arg => {
-  const { label, ...rAttrs } = arg
-
-  return (
-    <InputLabel style={{ display: 'block' }}>
-      <Radio {...rAttrs} />
-      <span className={styles.checkboxLabel}>
-        {label}
-      </span>
-    </InputLabel>
-  )
+const CheckboxWithLabel = arg => {
+  return <InputCorWithLabel type="radio" {...arg} />
 }
 
-export default styleInjector(styles)(RadioWithLabel)
+export default CheckboxWithLabel

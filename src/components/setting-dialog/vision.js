@@ -1,66 +1,14 @@
 import React from 'react'
-import styleInjector from 'react-jss'
-import Grid from 'material-ui/Grid'
-import Checkbox from 'material-ui/Checkbox'
-import Radio, { RadioGroup } from 'material-ui/Radio'
-import { InputLabel } from 'material-ui/Input'
+import { RadioGroup } from 'material-ui/Radio'
 import Divider from 'material-ui/Divider'
-import styles from './styles'
+import Form, { FormField, CheckboxWithLabel, RadioWithLabel } from './form'
 
-@styleInjector(styles)
 class Vision extends React.Component {
   checkboxClick = () => {
     console.log(111)
   }
 
   render() {
-    const { classes: styles } = this.props
-    const Form = arg => {
-      return (
-        <div className={styles.form}>
-          {arg.children}
-        </div>
-      )
-    }
-    const FormField = arg => {
-      return (
-        <div className={styles.formField}>
-          <Grid className={styles.formLabel} item={true} md={4}>
-            {arg.label}
-            <span>
-              {arg.desc}
-            </span>
-          </Grid>
-          <Grid item={true} md={8}>
-            {arg.children}
-          </Grid>
-        </div>
-      )
-    }
-    const CheckboxWithLabel = arg => {
-      const { label, ...cbAttrs } = arg
-
-      return (
-        <InputLabel style={{ display: 'block' }}>
-          <Checkbox {...cbAttrs} />
-          <span className={styles.checkboxLabel}>
-            {label}
-          </span>
-        </InputLabel>
-      )
-    }
-    const RadioWithLabel = arg => {
-      const { label, ...rAttrs } = arg
-
-      return (
-        <InputLabel style={{ display: 'block' }}>
-          <Radio {...rAttrs} />
-          <span className={styles.checkboxLabel}>
-            {label}
-          </span>
-        </InputLabel>
-      )
-    }
     return (
       <Form>
         <FormField label="图片源">

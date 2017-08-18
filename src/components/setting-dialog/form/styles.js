@@ -10,7 +10,7 @@ const styles = {
   formLabel: {
     lineHeight: '50px'
   },
-  checkboxLabel: {
+  inputLabel: {
     position: 'relative',
     top: '-5px',
     userSelect: 'none'

@@ -1,18 +1,8 @@
-import Checkbox from 'material-ui/Checkbox'
-import styleInjector from 'react-jss'
-import styles from './styles'
+import React from 'react'
+import InputCorWithLabel from './input-cor-with-label'
 
 const CheckboxWithLabel = arg => {
-  const { label, ...cbAttrs } = arg
-
-  return (
-    <InputLabel style={{ display: 'block' }}>
-      <Checkbox {...cbAttrs} />
-      <span className={styles.checkboxLabel}>
-        {label}
-      </span>
-    </InputLabel>
-  )
+  return <InputCorWithLabel type="checkbox" {...arg} />
 }
 
-export default styleInjector(styles)(CheckboxWithLabel)
+export default CheckboxWithLabel

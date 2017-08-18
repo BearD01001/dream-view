@@ -1,17 +1,19 @@
+import React from 'react'
+import Grid from 'material-ui/Grid'
 import styleInjector from 'react-jss'
 import styles from './styles'
 
-const FormField = arg => {
+const FormField = ({ label, desc, classes, children }) => {
   return (
-    <div className={styles.formField}>
-      <Grid className={styles.formLabel} item={true} md={4}>
-        {arg.label}
+    <div className={classes.formField}>
+      <Grid className={classes.formLabel} item={true} md={4}>
+        {label}
         <span>
-          {arg.desc}
+          {desc}
         </span>
       </Grid>
       <Grid item={true} md={8}>
-        {arg.children}
+        {children}
       </Grid>
     </div>
   )

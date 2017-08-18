@@ -1,3 +1,4 @@
+import React from 'react'
 import FormField from './form-field'
 import RadioWithLabel from './radio-with-label'
 import CheckboxWithLabel from './checkbox-with-label'
@@ -6,7 +7,7 @@ import styles from './styles'
 
 const Form = styleInjector(styles)(arg => {
   return (
-    <div className={styles.form}>
+    <div className={arg.classes.form}>
       {arg.children}
     </div>
   )
