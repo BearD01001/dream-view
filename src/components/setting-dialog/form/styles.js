@@ -1,6 +1,5 @@
 const styles = {
   form: {
-    width: 680,
     padding: '30px 50px'
   },
   formField: {

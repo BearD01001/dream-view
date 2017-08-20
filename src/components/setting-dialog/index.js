@@ -31,7 +31,6 @@ class SettingDialog extends React.Component {
       <Drawer anchor="right" open={this.state.open}>
         <Tabs
           value={this.state.active}
-          index={this.state.active}
           onChange={this.changeTab}
           indicatorColor="primary"
           textColor="primary"

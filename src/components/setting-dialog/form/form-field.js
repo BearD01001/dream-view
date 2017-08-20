@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Grid from 'material-ui/Grid'
 import styleInjector from 'react-jss'
 import styles from './styles'
@@ -17,6 +18,10 @@ const FormField = ({ label, desc, classes, children }) => {
       </Grid>
     </div>
   )
+}
+
+FormField.propTypes = {
+  label: PropTypes.string.isRequired
 }
 
 export default styleInjector(styles)(FormField)
