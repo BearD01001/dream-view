@@ -1,8 +1,17 @@
 import React from 'react'
 import { RadioGroup } from 'material-ui/Radio'
 import Divider from 'material-ui/Divider'
-import Form, { FormField, CheckboxWithLabel, RadioWithLabel } from './form'
+import Form, {
+  FormField,
+  CheckboxWithLabel,
+  RadioWithLabel,
+} from './form'
+import {
+  initSetting,
+  saveSetting,
+} from '../../model'
 
+@initSetting
 class Vision extends React.Component {
   state = {
     imageOrigin: [],
@@ -10,23 +19,15 @@ class Vision extends React.Component {
     updateInterval: '0'
   }
 
-  constructor() {
-    super()
-    const settingVisionSaved = localStorage.getItem('setting-vision')
-
-    if (settingVisionSaved) {
-      this.state = Object.assign(this.state, JSON.parse(settingVisionSaved))
-    }
+  constructor(props) {
+    super(props)
+    this.cacheNumChange = this.cacheNumChange.bind(this)
+    this.imageOriginChange = this.imageOriginChange.bind(this)
+    this.updateIntervalChange = this.updateIntervalChange.bind(this)
   }
 
-  saveVisionSetting() {
-    this.setState(state => {
-      localStorage.setItem('setting-vision', JSON.stringify(state))
-      return state
-    })
-  }
-
-  imageOriginChange = ({ target }) => {
+  @saveSetting
+  imageOriginChange ({ target }) {
     if (target.checked) {
       this.setState(preState => ({
         imageOrigin: [...preState.imageOrigin, target.value]
@@ -36,21 +37,20 @@ class Vision extends React.Component {
         imageOrigin: preState.imageOrigin.filter(v => v !== target.value)
       }))
     }
-    this.saveVisionSetting()
   }
 
-  cacheNumChange = (event, value) => {
+  @saveSetting
+  cacheNumChange (event, value) {
     this.setState({
       cacheNum: value
     })
-    this.saveVisionSetting()
   }
 
-  updateIntervalChange = (event, value) => {
+  @saveSetting
+  updateIntervalChange (event, value) {
     this.setState({
       updateInterval: value
     })
-    this.saveVisionSetting()
   }
 
   render() {

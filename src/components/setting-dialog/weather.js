@@ -3,11 +3,19 @@ import { RadioGroup } from 'material-ui/Radio'
 import Input from 'material-ui/Input'
 import Switch from 'material-ui/Switch'
 import Divider from 'material-ui/Divider'
-import Form, { FormField, CheckboxWithLabel, RadioWithLabel } from './form'
+import Form, {
+  FormField,
+  CheckboxWithLabel,
+  RadioWithLabel,
+} from './form'
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
-import { saveSetting } from '../../model'
+import {
+  initSetting,
+  saveSetting,
+} from '../../model'
 
+@initSetting
 class Weather extends React.Component {
   state = {
     weatherWidgetStatus: true,
@@ -16,23 +24,29 @@ class Weather extends React.Component {
   }
   // saveSetting = saveSetting(this)
 
+  constructor (props) {
+    super(props)
+    this.weatherWidgetTransparentChange = this.weatherWidgetStatusChange.bind(this)
+    this.weatherWidgetStatusChange = this.weatherWidgetStatusChange.bind(this)
+    this.tUnitChange = this.tUnitChange.bind(this)
+  }
+
   @saveSetting
-  weatherWidgetStatusChange = ({ target }) => {
-    console.log(target.checked)
+  weatherWidgetStatusChange({ target }) {
     this.setState({
       weatherWidgetStatus: target.checked
     })
-    this.saveSetting()
   }
 
-  tUnitChange = ({ target }) => {
+  @saveSetting
+  tUnitChange ({ target }) {
     this.setState({
       tUnit: target.value
     })
   }
 
-  weatherWidgetTransparentChange = value => {
-    console.log(value)
+  @saveSetting
+  weatherWidgetTransparentChange (value) {
     this.setState({
       weatherWidgetTransparent: value
     })

@@ -1,24 +1,20 @@
-function saveSetting (comp, peop, descriptor) {
-  console.log('====================================')
-  console.log(arguments)
-  console.log('====================================')
-  let { initializer, ...otherDes } = descriptor
+function saveSetting (comp, prop, descriptor) {
+  let compName = comp.constructor.name.toLowerCase()
+  let { value, ...otherDesc } = descriptor
 
   return {
-    ...otherDes,
-    initializer: function () {
-      console.log(1)
+    ...otherDesc,
+    initializer () {
+      return function () {
+        value.apply(this, arguments)
+        this.setState(preState => {
+          localStorage.setItem(`setting-${compName}`, JSON.stringify(preState))
+
+          return preState
+        })
+      }
     }
   }
-  // let compName = context.__proto__.constructor.name.toLowerCase()
-
-  // return function () {
-  //   this.setState(state => {
-  //     console.log(state)
-  //     localStorage.setItem(`setting-${compName}`, JSON.stringify(state))
-  //     return state
-  //   })
-  // }.bind(context)
 }
 
 export default saveSetting
