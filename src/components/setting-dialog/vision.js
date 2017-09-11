@@ -86,7 +86,7 @@ class Vision extends React.Component {
         <FormField label="缓存数量">
           <RadioGroup
             name="cache-num"
-            selectedValue={this.state.cacheNum}
+            value={this.state.cacheNum}
             onChange={this.cacheNumChange}
           >
             <RadioWithLabel label="3" value="3" />
@@ -98,7 +98,7 @@ class Vision extends React.Component {
         <FormField label="更新间隔">
           <RadioGroup
             name="update-interval"
-            selectedValue={this.state.updateInterval}
+            value={this.state.updateInterval}
             onChange={this.updateIntervalChange}
           >
             <RadioWithLabel label="智能" value="0" />

@@ -22,7 +22,6 @@ class Weather extends React.Component {
     tUnit: '0',
     weatherWidgetTransparent: 1
   }
-  // saveSetting = saveSetting(this)
 
   constructor (props) {
     super(props)
@@ -66,7 +65,7 @@ class Weather extends React.Component {
           <FormField label="温度单位">
             <RadioGroup
               name="tUnit"
-              selectedValue={this.state.tUnit}
+              value={this.state.tUnit}
               onChange={this.tUnitChange}
             >
               <RadioWithLabel label="℃" value="0" />
