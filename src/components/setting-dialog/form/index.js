@@ -15,3 +15,4 @@ const Form = styleInjector(styles)(arg => {
 
 export default Form
 export { FormField, RadioWithLabel, CheckboxWithLabel }
+export { default as Slider } from './slider'
