@@ -1,11 +1,9 @@
 import React from 'react'
 import { RadioGroup } from 'material-ui/Radio'
-import Input from 'material-ui/Input'
 import Switch from 'material-ui/Switch'
 import Divider from 'material-ui/Divider'
 import Form, {
   FormField,
-  CheckboxWithLabel,
   RadioWithLabel,
   Slider,
 } from './form'
