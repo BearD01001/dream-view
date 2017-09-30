@@ -26,9 +26,19 @@ class SettingDialog extends React.Component {
     console.log(this)
   }
 
+  closeSetting = _ => {
+    this.setState({
+      open: false
+    })
+  }
+
   render() {
     return (
-      <Drawer anchor="right" open={this.state.open}>
+      <Drawer
+        anchor="right"
+        open={this.state.open}
+        onRequestClose={this.closeSetting}
+      >
         <Tabs
           value={this.state.active}
           onChange={this.changeTab}
