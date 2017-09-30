@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Drawer from 'material-ui/Drawer'
 import SwipeableViews from 'react-swipeable-views'
 import Tabs, { Tab } from 'material-ui/Tabs'
@@ -10,6 +11,7 @@ import Vision from './vision'
 import Weather from './weather'
 import Search from './search'
 
+@connect(state => state)
 class SettingDialog extends React.Component {
   state = {
     open: true,
@@ -23,7 +25,7 @@ class SettingDialog extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this)
+    console.log(this.props.settingDialog)
   }
 
   closeSetting = _ => {
