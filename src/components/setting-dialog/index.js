@@ -11,7 +11,6 @@ import Vision from './vision'
 import Weather from './weather'
 import Search from './search'
 
-@connect(state => state)
 class SettingDialog extends React.Component {
   state = {
     open: true,
@@ -25,7 +24,6 @@ class SettingDialog extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.settingDialog)
   }
 
   closeSetting = _ => {

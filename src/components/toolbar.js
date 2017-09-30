@@ -6,8 +6,6 @@ import HistoryIcon from 'material-ui-icons/History'
 import WidgetsIcon from 'material-ui-icons/Widgets'
 import StarIcon from 'material-ui-icons/Star'
 
-import SettingDialog from './setting-dialog'
-
 const style = {
   toolbar: {
     position: 'absolute',
@@ -34,7 +32,6 @@ class Toolbar extends React.Component {
         <IconButton color='contrast'>
           <SettingsIcon />
         </IconButton>
-        <SettingDialog />
       </div>
     )
   }
