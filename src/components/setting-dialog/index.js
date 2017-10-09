@@ -19,9 +19,6 @@ class SettingDialog extends React.Component {
     this.setState({ active: idx })
   }
 
-  componentDidMount() {
-  }
-
   render() {
     const {
       settingDialogStatus,
