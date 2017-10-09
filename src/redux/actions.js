@@ -1,14 +1,8 @@
-import constants from './constants'
+export const TOGGLE_SETTING = 'TOGGLE_SETTING'
 
-const actions = {
-  settingDialog (status) {
-    return {
-      type: constants.SETTING_DIALOG,
-      status
-    }
+export function toggleSetting (status) {
+  return {
+    type: TOGGLE_SETTING,
+    status,
   }
 }
-
-store.dispatch(settingDialog(true))
-
-export default actions

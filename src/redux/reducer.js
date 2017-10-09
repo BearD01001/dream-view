@@ -1,8 +1,9 @@
-import constants from './constants'
+import { TOGGLE_SETTING } from './actions'
 
 function reducer (state, action) {
-  switch (action) {
-    case constants.OPEN_SETTING_DIALOG: {
+  switch (action.type) {
+    case TOGGLE_SETTING: {
+      console.log(action)
       return Object.assign({}, state, {
         settingDialog: action.status
       })
