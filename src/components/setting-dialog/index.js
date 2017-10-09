@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import Drawer from 'material-ui/Drawer'
 import SwipeableViews from 'react-swipeable-views'
 import Tabs, { Tab } from 'material-ui/Tabs'
@@ -13,11 +12,8 @@ import Search from './search'
 
 class SettingDialog extends React.Component {
   state = {
-    open: true,
     active: 0
   }
-
-  closeDialog = () => this.setState({ open: false })
 
   changeTab = (event, idx) => {
     this.setState({ active: idx })
@@ -26,18 +22,18 @@ class SettingDialog extends React.Component {
   componentDidMount() {
   }
 
-  closeSetting = _ => {
-    this.setState({
-      open: false
-    })
-  }
-
   render() {
+    const {
+      settingDialogStatus,
+      onToggleSetting,
+    } = this.props
+    const closeDialog = _ => onToggleSetting(false)
+
     return (
       <Drawer
         anchor="right"
-        open={this.state.open}
-        onRequestClose={this.closeSetting}
+        open={settingDialogStatus}
+        onRequestClose={closeDialog}
       >
         <Tabs
           value={this.state.active}

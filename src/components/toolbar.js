@@ -16,8 +16,9 @@ const style = {
 }
 
 class Toolbar extends React.Component {
-  state = {  }
   render() {
+    const { onToggleSetting } = this.props
+
     return (
       <div style={ style.toolbar }>
         <IconButton color='contrast'>
@@ -29,7 +30,9 @@ class Toolbar extends React.Component {
         <IconButton color='contrast'>
           <HistoryIcon />
         </IconButton>
-        <IconButton color='contrast'>
+        <IconButton
+          color='contrast'
+          onClick={_ => onToggleSetting(true)} >
           <SettingsIcon />
         </IconButton>
       </div>

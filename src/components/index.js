@@ -11,31 +11,31 @@ import { toggleSetting } from '../redux/actions'
 
 const mapToProps = state => {
   return {
-    toggleSetting: state.toggleSetting,
-    onToggleSetting: toggleSetting(state.toggleSetting),
+    settingDialogStatus: state.settingDialog,
+    onToggleSetting: toggleSetting(state.settingDialog),
   }
 }
 
 @connect(mapToProps)
 class Index extends Component {
   render() {
-    const { dispatch } = this.props
+    const {
+      dispatch,
+      settingDialogStatus,
+    } = this.props
+    const dispatchHelper = status => dispatch(toggleSetting(status))
 
     return [
       <Landscape />,
       <SearchBar />,
-      <Toolbar />,
+      <Toolbar
+        onToggleSetting={dispatchHelper} />,
       <Clock />,
       <SettingDialog
-        onToggleSetting={status =>
-          dispatch(toggleSetting(status))
-        } />,
+        settingDialogStatus={settingDialogStatus}
+        onToggleSetting={dispatchHelper} />,
     ]
   }
 }
 
-function mapStateToProps (state) {
-  return state
-}
-
-export default connect(mapStateToProps)(Index)
+export default Index
