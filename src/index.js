@@ -13,7 +13,7 @@ let initailState = {
 let store = configureStore(initailState)
 
 ReactDOM.render(
-  <Provider store={ store }>
+  <Provider store={store}>
     <Index />
   </Provider>,
   document.getElementById('root')

@@ -1,5 +1,4 @@
 import React from 'react'
-// import { withStyles } from 'material-ui/styles'
 import IconButton from 'material-ui/IconButton'
 import SettingsIcon from 'material-ui-icons/Settings'
 import HistoryIcon from 'material-ui-icons/History'
