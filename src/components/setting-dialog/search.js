@@ -11,6 +11,7 @@ import {
   initSetting,
   saveSetting,
 } from '../../model'
+import { searchEngine } from '../../config'
 
 @initSetting
 class Search extends React.Component {
@@ -23,8 +24,8 @@ class Search extends React.Component {
   constructor (props) {
     super(props)
     this.searchWidgetTransparentChange = this.searchWidgetTransparentChange.bind(this)
-    this.searchWidgetStatusChange = this.searchWidgetStatusChange.bind(this)
-    this.searchEngine = this.searchEngine.bind(this)
+    this.searchWidgetStatusChange      = this.searchWidgetStatusChange.bind(this)
+    this.searchEngine                  = this.searchEngine.bind(this)
   }
 
   @saveSetting
@@ -65,9 +66,11 @@ class Search extends React.Component {
               value={this.state.searchEngine}
               onChange={this.searchEngine}
             >
-              <RadioWithLabel label="谷歌" value="google" />
-              <RadioWithLabel label="必应" value="bing" />
-              <RadioWithLabel label="百度" value="baidu" />
+              {
+                searchEngine.map(i => {
+                  return <RadioWithLabel label={i.nameZh} value={i.nameEn} />
+                })
+              }
             </RadioGroup>
           </FormField>
           <Divider />
