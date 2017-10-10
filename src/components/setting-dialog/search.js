@@ -68,7 +68,12 @@ class Search extends React.Component {
             >
               {
                 searchEngine.map(i => {
-                  return <RadioWithLabel label={i.nameZh} value={i.nameEn} />
+                  return (
+                    <RadioWithLabel
+                      key={i.nameEn}
+                      label={i.nameZh}
+                      value={i.nameEn} />
+                  )
                 })
               }
             </RadioGroup>
