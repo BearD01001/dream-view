@@ -37,7 +37,7 @@ class Search extends React.Component {
   @saveSetting
   searchEngine ({ target }) {
     this.setState({
-      tUnit: target.value
+      searchEngine: target.value
     })
   }
 
@@ -62,7 +62,7 @@ class Search extends React.Component {
           <FormField label="搜索引擎">
             <RadioGroup
               name="tUnit"
-              value={this.state.tUnit}
+              value={this.state.searchEngine}
               onChange={this.searchEngine}
             >
               <RadioWithLabel label="谷歌" value="google" />
