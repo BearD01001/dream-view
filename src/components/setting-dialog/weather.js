@@ -14,17 +14,11 @@ import {
 
 @initSetting
 class Weather extends React.Component {
-  state = {
-    weatherWidgetStatus: true,
-    tUnit: '0',
-    weatherWidgetTransparent: 1
-  }
-
   constructor (props) {
     super(props)
     this.weatherWidgetTransparentChange = this.weatherWidgetTransparentChange.bind(this)
-    this.weatherWidgetStatusChange = this.weatherWidgetStatusChange.bind(this)
-    this.tUnitChange = this.tUnitChange.bind(this)
+    this.weatherWidgetStatusChange      = this.weatherWidgetStatusChange.bind(this)
+    this.tUnitChange                    = this.tUnitChange.bind(this)
   }
 
   @saveSetting

@@ -46,6 +46,11 @@ class Index extends Component {
       <Clock key='ck' />,
       <SettingDialog
         key='sd'
+        setting={{
+          vision : this.visionConf,
+          search : this.searchConf,
+          weather: this.weatherConf,
+        }}
         settingDialogStatus={settingDialogStatus}
         onToggleSetting={dispatchHelper} />,
     ]

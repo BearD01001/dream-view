@@ -21,6 +21,7 @@ class SettingDialog extends React.Component {
 
   render() {
     const {
+      setting,
       settingDialogStatus,
       onToggleSetting,
     } = this.props
@@ -44,9 +45,9 @@ class SettingDialog extends React.Component {
           <Tab icon={<IconPublic />} label="Search Engine" />
         </Tabs>
         <SwipeableViews index={this.state.active}>
-          <Vision />
-          <Weather />
-          <Search />
+          <Vision setting={setting.vision} />
+          <Weather setting={setting.weather} />
+          <Search setting={setting.search} />
         </SwipeableViews>
       </Drawer>
     )

@@ -15,12 +15,6 @@ import { searchEngine } from '../../config'
 
 @initSetting
 class Search extends React.Component {
-  state = {
-    searchWidgetTransparent: 1,
-    searchWidgetStatus     : true,
-    searchEngine           : 'google',
-  }
-
   constructor (props) {
     super(props)
     this.searchWidgetTransparentChange = this.searchWidgetTransparentChange.bind(this)
@@ -29,7 +23,7 @@ class Search extends React.Component {
   }
 
   @saveSetting
-  searchWidgetStatusChange({ target }) {
+  searchWidgetStatusChange ({ target }) {
     this.setState({
       searchWidgetStatus: target.checked
     })

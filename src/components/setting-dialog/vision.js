@@ -13,17 +13,11 @@ import {
 
 @initSetting
 class Vision extends React.Component {
-  state = {
-    imageOrigin: [],
-    cacheNum: '3',
-    updateInterval: '0'
-  }
-
   constructor(props) {
     super(props)
-    this.cacheNumChange = this.cacheNumChange.bind(this)
-    this.imageOriginChange = this.imageOriginChange.bind(this)
     this.updateIntervalChange = this.updateIntervalChange.bind(this)
+    this.imageOriginChange    = this.imageOriginChange.bind(this)
+    this.cacheNumChange       = this.cacheNumChange.bind(this)
   }
 
   @saveSetting
