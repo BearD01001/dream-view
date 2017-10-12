@@ -9,6 +9,9 @@ import SettingDialog from './setting-dialog'
 
 import { toggleSetting } from '../redux/actions'
 
+import { defaultSetting } from '../config'
+import { getSetting } from '../utils'
+
 const mapToProps = state => {
   return {
     settingDialogStatus: state.settingDialog,
@@ -18,6 +21,13 @@ const mapToProps = state => {
 
 @connect(mapToProps)
 class Index extends Component {
+  constructor (props) {
+    super(props)
+    this.visionConf  = getSetting('vision')  || defaultSetting.vision
+    this.searchConf  = getSetting('search')  || defaultSetting.search
+    this.weatherConf = getSetting('weather') || defaultSetting.weather
+  }
+
   render() {
     const {
       dispatch,
@@ -26,12 +36,21 @@ class Index extends Component {
     const dispatchHelper = status => dispatch(toggleSetting(status))
 
     return [
-      <Landscape />,
-      <SearchBar />,
+      <Landscape key='lc' />,
+      <SearchBar
+        key='sb'
+        setting={this.searchConf} />,
       <Toolbar
+        key='tb'
         onToggleSetting={dispatchHelper} />,
-      <Clock />,
+      <Clock key='ck' />,
       <SettingDialog
+        key='sd'
+        setting={{
+          vision : this.visionConf,
+          search : this.searchConf,
+          weather: this.weatherConf,
+        }}
         settingDialogStatus={settingDialogStatus}
         onToggleSetting={dispatchHelper} />,
     ]

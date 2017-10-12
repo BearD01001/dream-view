@@ -36,7 +36,6 @@ class ImgUtil {
       'http://drscdn.500px.org/photo/205620825/q%3D80_m%3D2000/9012d5d9233a5a5429c650da905bcf2f',
       'http://drscdn.500px.org/photo/205640447/q%3D80_m%3D1500/02be2ab1de34332bfd51e3383389aa51',
       'http://drscdn.500px.org/photo/205648235/q%3D80_m%3D1500/afa534567ab40d7186acf7568f5d92d6',
-      'http://drscdn.500px.org/photo/205683423/q%3D80_m%3D1500/9956f96e09bd743196e05722856d9d60',
       'http://drscdn.500px.org/photo/205667905/q%3D80_m%3D1500/164b28f8298c897e5fc378089d61a0aa',
       'http://drscdn.500px.org/photo/205680927/q%3D80_m%3D1500/ca28d4b7764f6c93548d48078f9dfe1e',
       'http://drscdn.500px.org/photo/205644471/q%3D80_m%3D1500/8cf66c6ce71f86e85c448f50ae244f35',

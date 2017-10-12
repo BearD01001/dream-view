@@ -1,19 +1,26 @@
 import React, { Component } from 'react'
 import '../assets/search.css'
 
+import { searchEngine } from '../config'
+
 class SearchBar extends Component {
+  componentWillMount () {
+    const { setting } = this.props
+    this.se = searchEngine.filter(i => i.nameEn === setting.searchEngine)[0]
+  }
+
   gotoSearch () {
     this.refs.searchBtn.click()
   }
   render() {
     return (
-      <form id='search' action='http://www.bing.com/search'>
+      <form id='search' action={this.se.action}>
         <input
           type='text'
-          name='q'
+          name={this.se.parameter}
           spellCheck='false'
           autoComplete='off'
-          placeholder='Search Bing'
+          placeholder={this.se.placeholder}
         />
         <span
           className='button fa fa-search'
