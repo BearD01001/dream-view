@@ -1,1 +1,1 @@
-export { default as saveSetting } from './seaveSetting'
+export { default as getSetting } from './getSetting'
