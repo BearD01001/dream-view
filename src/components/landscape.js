@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ImgUtil from '../model/img-util'
+import ImgUtil from '../model/imgUtil'
 
 class Landscape extends Component {
   state = {

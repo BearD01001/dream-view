@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import Landscape from './landscape'
-import SearchBar from './search-bar'
+import SearchBar from './searchBar'
 import Clock from './clock'
 import Toolbar from './toolbar'
-import SettingDialog from './setting-dialog'
+import SettingDialog from './settingDialog'
 
 import { toggleSetting } from '../redux/actions'
 

@@ -1,7 +1,7 @@
 import React from 'react'
-import FormField from './form-field'
-import RadioWithLabel from './radio-with-label'
-import CheckboxWithLabel from './checkbox-with-label'
+import FormField from './formField'
+import RadioWithLabel from './radioWithLabel'
+import CheckboxWithLabel from './checkboxWithLabel'
 import styleInjector from 'react-jss'
 import styles from './styles'
 

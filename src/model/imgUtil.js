@@ -1,5 +1,5 @@
 import axios from 'axios'
-// import LocalStorage from './local-storage'
+// import LocalStorage from './localStorage'
 
 class ImgUtil {
   async get () {
