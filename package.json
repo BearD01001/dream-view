@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/BearD01001/dream-view/issues"
   },
-  "homepage": "https://github.com/BearD01001/dream-view#readme",
+  "homepage": "https://vision.dream.menu",
   "dependencies": {
     "autoprefixer": "7.1.1",
     "axios": "^0.16.2",
