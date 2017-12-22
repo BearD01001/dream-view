@@ -36,7 +36,7 @@ class Index extends Component {
     const dispatchHelper = status => dispatch(toggleSetting(status))
 
     return [
-      <Landscape key='lc' />,
+      <Landscape key='ls' />,
       <SearchBar
         key='sb'
         setting={this.searchConf} />,

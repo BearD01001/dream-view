@@ -15,19 +15,17 @@ class Landscape extends Component {
   }
 
   imgLoaded () {
-    setTimeout(() => {
-      this.setState({ imgLoaded: true })
-    }, 500)
+    this.setState({ imgLoaded: true })
   }
 
   render() {
     let style = {
       backgroundImage: this.state.imgData ? `url(${ this.state.imgData })` : 'none',
       position: 'absolute',
-      top: '0px',
-      right: '0px',
-      bottom: '0px',
-      left: '0px',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
       backgroundPosition: 'center',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
