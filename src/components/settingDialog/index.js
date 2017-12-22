@@ -31,7 +31,7 @@ class SettingDialog extends React.Component {
       <Drawer
         anchor="right"
         open={settingDialogStatus}
-        onRequestClose={closeDialog}
+        onClose={closeDialog}
       >
         <Tabs
           value={this.state.active}

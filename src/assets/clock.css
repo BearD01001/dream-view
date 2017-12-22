@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'clock-text';
-    src: url('./clock-text.ttf') format('truetype');
+    font-family: 'clockText';
+    src: url('./clockText.ttf') format('truetype');
 }
 #clock.default {
   position: absolute;
@@ -8,7 +8,7 @@
   bottom: 1rem;
   width: 22rem;
   color: #fff;
-  font-family: 'clock-text';
+  font-family: 'clockText';
   text-shadow: 0 0 10px #2d2d2d;
   cursor: default;
   user-select: none;

@@ -1,5 +1,5 @@
 import React from 'react'
-import InputCorWithLabel from './input-cor-with-label'
+import InputCorWithLabel from './inputCorWithLabel'
 
 const CheckboxWithLabel = arg => {
   return <InputCorWithLabel type="checkbox" {...arg} />

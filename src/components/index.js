@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import ThemeProvider from './themeProvider'
 import Landscape from './landscape'
-import SearchBar from './search-bar'
+import SearchBar from './searchBar'
 import Clock from './clock'
 import Toolbar from './toolbar'
-import SettingDialog from './setting-dialog'
+import SettingDialog from './settingDialog'
 
 import { toggleSetting } from '../redux/actions'
 
@@ -36,7 +37,7 @@ class Index extends Component {
     const dispatchHelper = status => dispatch(toggleSetting(status))
 
     return [
-      <Landscape key='lc' />,
+      <Landscape key='ls' />,
       <SearchBar
         key='sb'
         setting={this.searchConf} />,
@@ -44,15 +45,17 @@ class Index extends Component {
         key='tb'
         onToggleSetting={dispatchHelper} />,
       <Clock key='ck' />,
-      <SettingDialog
-        key='sd'
-        setting={{
-          vision : this.visionConf,
-          search : this.searchConf,
-          weather: this.weatherConf,
-        }}
-        settingDialogStatus={settingDialogStatus}
-        onToggleSetting={dispatchHelper} />,
+      <ThemeProvider>
+        <SettingDialog
+          key='sd'
+          setting={{
+            vision : this.visionConf,
+            search : this.searchConf,
+            weather: this.weatherConf,
+          }}
+          settingDialogStatus={settingDialogStatus}
+          onToggleSetting={dispatchHelper} />,
+      </ThemeProvider>
     ]
   }
 }
