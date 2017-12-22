@@ -25,7 +25,6 @@ class SearchBar extends Component {
         <span
           className='button fa fa-search'
           onClick={ this.gotoSearch.bind(this) }
-          title='搜索'
         >
         </span>
         <button

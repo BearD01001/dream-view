@@ -54,7 +54,7 @@ class Index extends Component {
             weather: this.weatherConf,
           }}
           settingDialogStatus={settingDialogStatus}
-          onToggleSetting={dispatchHelper} />,
+          onToggleSetting={dispatchHelper} />
       </ThemeProvider>
     ]
   }
