@@ -6,10 +6,9 @@ import  {
 import reducer from './reducer'
 import logger from 'redux-logger'
 
-let finalCreateStore = compose(applyMiddleware(logger))(createStore)
-  
-function configureStore (initialState = { settingDialog: false }) {
-  return finalCreateStore(reducer, initialState)
-}
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const store = createStore(reducer, { settingDialog: false }, composeEnhancers(
+  applyMiddleware(logger)
+))
 
-export default configureStore
+export default store
