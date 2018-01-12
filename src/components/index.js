@@ -45,16 +45,15 @@ class Index extends Component {
         key='tb'
         onToggleSetting={dispatchHelper} />,
       <Clock key='ck' />,
-      <ThemeProvider>
+      <ThemeProvider key='tp'>
         <SettingDialog
-          key='sd'
           setting={{
             vision : this.visionConf,
             search : this.searchConf,
             weather: this.weatherConf,
           }}
           settingDialogStatus={settingDialogStatus}
-          onToggleSetting={dispatchHelper} />,
+          onToggleSetting={dispatchHelper} />
       </ThemeProvider>
     ]
   }

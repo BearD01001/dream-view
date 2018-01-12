@@ -54,7 +54,6 @@ class Clock extends Component {
     format: this.format,
   }
   componentDidMount() {
-    console.log(this.state.clock)
     setInterval(() => {
       this.setState({ clock: this.nowClock() })
     }, 1000)
