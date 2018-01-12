@@ -10,8 +10,6 @@ export default {
     weatherWidgetTransparent: 1,
   },
   search: {
-    weatherWidgetStatus: true,
-    tUnit: '0',
-    weatherWidgetTransparent: 1,
+    searchEngine: 'Google',
   },
 }
