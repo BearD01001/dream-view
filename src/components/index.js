@@ -7,6 +7,7 @@ import SearchBar from './searchBar'
 import Clock from './clock'
 import Toolbar from './toolbar'
 import SettingDialog from './settingDialog'
+// import Weather from './weather'
 
 import { toggleSetting } from '../redux/actions'
 
@@ -26,6 +27,7 @@ class Index extends Component {
     super(props)
     this.visionConf  = getSetting('vision')  || defaultSetting.vision
     this.searchConf  = getSetting('search')  || defaultSetting.search
+    console.log(defaultSetting.search)
     this.weatherConf = getSetting('weather') || defaultSetting.weather
   }
 
@@ -45,6 +47,7 @@ class Index extends Component {
         key='tb'
         onToggleSetting={dispatchHelper} />,
       <Clock key='ck' />,
+      // <Weather key='wr' />,
       <ThemeProvider key='tp'>
         <SettingDialog
           setting={{
