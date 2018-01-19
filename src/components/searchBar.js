@@ -7,6 +7,7 @@ class SearchBar extends Component {
   componentWillMount () {
     const { setting } = this.props
     this.se = searchEngine.filter(i => i.nameEn === setting.searchEngine)[0]
+    console.log(searchEngine)
   }
 
   gotoSearch () {
