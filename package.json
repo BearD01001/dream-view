@@ -1,6 +1,6 @@
 {
   "name": "dream-view",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "private": true,
   "description": "View of your dream.",
   "main": "src/index.js",
