@@ -2,9 +2,11 @@ import React from 'react'
 import Drawer from 'material-ui/Drawer'
 import SwipeableViews from 'react-swipeable-views'
 import Tabs, { Tab } from 'material-ui/Tabs'
-import IconMovieFilter from 'material-ui-icons/MovieFilter'
-import IconWbSunny from 'material-ui-icons/WbSunny'
-import IconPublic from 'material-ui-icons/Public'
+import {
+  MovieFilter as VisionIcon,
+  WbSunny as WeatherIcon,
+  Public as SearchEngineIcon,
+} from '@material-ui/icons'
 
 import Vision from './vision'
 import Weather from './weather'
@@ -12,7 +14,7 @@ import Search from './search'
 
 class SettingDialog extends React.Component {
   state = {
-    active: 0
+    active: 0,
   }
 
   changeTab = (event, idx) => {
@@ -20,19 +22,11 @@ class SettingDialog extends React.Component {
   }
 
   render() {
-    const {
-      setting,
-      settingDialogStatus,
-      onToggleSetting,
-    } = this.props
+    const { setting, settingDialogStatus, onToggleSetting } = this.props
     const closeDialog = _ => onToggleSetting(false)
 
     return (
-      <Drawer
-        anchor="right"
-        open={settingDialogStatus}
-        onClose={closeDialog}
-      >
+      <Drawer anchor="right" open={settingDialogStatus} onClose={closeDialog}>
         <Tabs
           value={this.state.active}
           onChange={this.changeTab}
@@ -40,9 +34,9 @@ class SettingDialog extends React.Component {
           textColor="primary"
           centered
         >
-          <Tab icon={<IconMovieFilter />} label="Vision" />
-          <Tab icon={<IconWbSunny />} label="Weather" />
-          <Tab icon={<IconPublic />} label="Search Engine" />
+          <Tab icon={<VisionIcon />} label="Vision" />
+          <Tab icon={<WeatherIcon />} label="Weather" />
+          <Tab icon={<SearchEngineIcon />} label="Search Engine" />
         </Tabs>
         <SwipeableViews index={this.state.active}>
           <Vision setting={setting.vision} />
